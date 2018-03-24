@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Eurokegel</string>
+    <string name="title_activity_add_player">JÁTÉKOSOK MEGADÁSA:</string>
+    <string name="title_activity_game">JÁTÉK:</string>
+    <string name="title_activity_main">FŐMENÜ</string>
+    <string name="textview_player_one">1. JÁTÉKOS NEVE:</string>
+    <string name="textview_player_two">2. JÁTÉKOS NEVE:</string>
+    <string name="textview_beginner_player">A JÁTÉKOT KEZDI:</string>
+    <string name="textview_copyright">© 2018 Csasztvan Zsolt</string>
+    <string name="button_begin_game">JÁTÉK INDÍTÁSA</string>
+    <string name="PlyOneEmpty">Töltsd ki az első játékos nevét!</string>
+    <string name="PlyTwoEmpty">Töltsd ki a második játékos nevét!</string>
+    <string name="BeginnerPlyEmpty">Töltsd ki a játékot kezdő játékos nevét!</string>
+    <string name="PlyOneEqualsPlyTwo">A két játékos neve nem lehet megegyező!</string>
+    <string name="MessageBoxTitleWarning">Figyelem!</string>
+    <string name="NewGame">Új játék</string>
+    <string name="EmptyString"> </string>
+</resources>
