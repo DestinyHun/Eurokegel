@@ -15,4 +15,26 @@
     <string name="MessageBoxTitleWarning">Figyelem!</string>
     <string name="NewGame">Új játék</string>
     <string name="EmptyString"> </string>
+    <string name="point1">1</string>
+    <string name="point2">2</string>
+    <string name="point3">3</string>
+    <string name="point4">4</string>
+    <string name="point5">5</string>
+    <string name="point6">6</string>
+    <string name="point7">7</string>
+    <string name="point8">8</string>
+    <string name="point9">9</string>
+    <string name="point10">10</string>
+    <string name="point11">11</string>
+    <string name="point12">12</string>
+    <string name="point13">13</string>
+    <string name="point14">14</string>
+    <string name="point15">15</string>
+    <string name="point16">16</string>
+    <string name="point17">17</string>
+    <string name="point18">18</string>
+    <string name="point19">19</string>
+    <string name="point20">20</string>
+    <string name="point21">21</string>
+    <string name="point22">22</string>
 </resources>
