@@ -24,16 +24,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AddPlayerActivity"
             android:label="@string/title_activity_add_player"
-            android:parentActivityName="com.example.win_10.eurokegel.MainActivity" />
-
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".GameActivity"
             android:label="JÁTÉK"
-            android:parentActivityName="com.example.win_10.eurokegel.AddPlayerActivity" />
+            android:parentActivityName=".AddPlayerActivity" />
+
+        <activity
+            android:name=".PointerActivity"
+            android:label="PONTOZÁS"
+            android:parentActivityName=".GameActivity" />
 
     </application>
 
