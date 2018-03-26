@@ -8,13 +8,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         android:orientation="vertical"
         android:weightSum="100">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="10"
+            android:layout_weight="20"
             android:baselineAligned="false"
             android:orientation="horizontal"
             android:weightSum="100">
@@ -32,8 +33,11 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="50"
-                    android:gravity="top"
-                    android:textAlignment="center" />
+                    android:background="@drawable/black_border_white"
+                    android:gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/playerTwoName"
@@ -42,9 +46,11 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="50"
-                    android:background="?attr/colorError"
-                    android:gravity="top"
-                    android:textAlignment="center" />
+                    android:background="@drawable/black_border_red"
+                    android:gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
 
             </TableRow>
 
@@ -72,7 +78,9 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="27"
                     android:gravity="top"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/playerPointSeparator"
@@ -81,7 +89,9 @@
                     android:layout_weight="45"
                     android:gravity="top"
                     android:text="@string/dash_sign"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/playerTwoPoint"
@@ -90,7 +100,9 @@
                     android:layout_marginEnd="20dp"
                     android:layout_weight="27"
                     android:gravity="top"
-                    android:textAlignment="center" />
+                    android:textAlignment="center"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
 
             </TableRow>
 
@@ -99,26 +111,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="27"
             android:layout_marginTop="5dp"
+            android:layout_weight="17"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="100"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="100"
                 android:weightSum="100">
 
                 <Button
                     android:id="@+id/addPoint"
                     android:layout_height="match_parent"
-                    android:layout_weight="20"
                     android:layout_marginStart="4dp"
+                    android:layout_weight="20"
                     android:background="@drawable/black_border_green"
                     android:onClick="AddPoint_OnClick"
                     android:text="@string/AddPoint" />
@@ -130,25 +142,25 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="17"
+            android:layout_weight="14"
             android:baselineAligned="false"
             android:orientation="horizontal">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="100"
-                android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="100"
                 android:weightSum="100">
 
                 <Button
                     android:id="@+id/newSet"
                     android:layout_height="match_parent"
-                    android:layout_weight="33.4"
                     android:layout_marginStart="4dp"
+                    android:layout_weight="33.4"
                     android:background="@drawable/black_border_yellow"
                     android:onClick="NewSet_OnClick"
                     android:text="@string/NewSet" />
@@ -156,8 +168,8 @@
                 <Button
                     android:id="@+id/removePoint"
                     android:layout_height="match_parent"
-                    android:layout_weight="33.3"
                     android:layout_marginStart="4dp"
+                    android:layout_weight="33.3"
                     android:background="@drawable/black_border_red"
                     android:onClick="RemovePoint_OnClick"
                     android:text="@string/RemovePoint" />
@@ -165,8 +177,8 @@
                 <Button
                     android:id="@+id/history"
                     android:layout_height="match_parent"
-                    android:layout_weight="33.3"
                     android:layout_marginStart="4dp"
+                    android:layout_weight="33.3"
                     android:background="@drawable/black_border_yellow"
                     android:onClick="History_OnClick"
                     android:text="@string/History" />

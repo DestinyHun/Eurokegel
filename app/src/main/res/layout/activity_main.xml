@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
         <ImageView
@@ -16,25 +17,106 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.10"
-            android:visibility="visible"
-            android:contentDescription="@string/EmptyString"/>
+            android:contentDescription="@string/EmptyString"
+            android:visibility="visible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.50"
+        android:background="@color/colorPrimary"
+        android:weightSum="100"
+        android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.50"
-            android:visibility="visible"
-            app:srcCompat="@drawable/eurokegel"
-            android:contentDescription="@string/EmptyString"/>
+            android:id="@+id/imageView9"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:contentDescription="@string/EmptyString"
+            android:visibility="visible" />
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/magyarbiliardImageView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/EmptyString"
+            android:visibility="visible"
+            android:clickable="true"
+            android:onClick="MagyarbiliardTextView_OnClick"
+            app:srcCompat="@drawable/magyarbiliard" />
+
+        <ImageView
+            android:id="@+id/EurokegelImageView7"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/EmptyString"
+            android:visibility="visible"
+            android:clickable="true"
+            android:onClick="EurokegelTextView_OnClick"
+            app:srcCompat="@drawable/eurokegel" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:contentDescription="@string/EmptyString"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.10"
-            android:visibility="visible"
-            android:contentDescription="@string/EmptyString"/>
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
+            android:background="@color/colorPrimary"
+            android:weightSum="100"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView21"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:contentDescription="@string/EmptyString"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/magyarbiliardOkImageView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="30"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/EmptyString"
+                android:visibility="visible"
+                app:srcCompat="@drawable/ok" />
+
+            <ImageView
+                android:id="@+id/eurokegelOkImageView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="30"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/EmptyString"
+                android:visibility="invisible"
+                app:srcCompat="@drawable/ok" />
+
+            <ImageView
+                android:id="@+id/imageView18"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:contentDescription="@string/EmptyString"
+                android:visibility="visible" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/newGameButton"
@@ -44,6 +126,7 @@
             android:layout_marginEnd="40dp"
             android:layout_marginStart="40dp"
             android:layout_weight="0.15"
+            android:background="@drawable/black_border_green"
             android:text="@string/NewGame"
             android:visibility="visible"
             tools:clickable="false"
@@ -54,8 +137,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.10"
-            android:visibility="visible"
-            android:contentDescription="@string/EmptyString"/>
+            android:contentDescription="@string/EmptyString"
+            android:visibility="visible" />
 
         <TextView
             android:id="@+id/copyRight"

@@ -1,6 +1,7 @@
 package com.example.win_10.eurokegel;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -17,16 +18,18 @@ public class PointerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pointer);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
         for(int i=1;i<=22;i++)
         {
             int id = getResources().getIdentifier("pointWhiteButton" + Integer.toString(i), "id", context.getPackageName());
-            ((Button)findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.button_point_size));
+            ((Button)findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP,Constants.DefaultTextSizeLarge);
 
             id = getResources().getIdentifier("pointRedButton" + Integer.toString(i), "id", context.getPackageName());
-            ((Button)findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.button_point_size));
+            ((Button)findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
         }
-        ((TextView)findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.text_size));
-        ((TextView)findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.text_size));
+        ((TextView)findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((TextView)findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
         ((TextView)findViewById(R.id.playerOneName)).setText(Constants.PlayerOne.toUpperCase());
         ((TextView)findViewById(R.id.playerTwoName)).setText(Constants.PlayerTwo.toUpperCase());
     }
@@ -56,8 +59,8 @@ public class PointerActivity extends AppCompatActivity {
 
         int newPoints = oldPoints + pointsToSet;
 
-        if (newPoints > 100)
-            newPoints = 100;
+        if (newPoints > Constants.GamePointLimit)
+            newPoints = Constants.GamePointLimit;
         else if (newPoints <0)
             newPoints = 0;
 

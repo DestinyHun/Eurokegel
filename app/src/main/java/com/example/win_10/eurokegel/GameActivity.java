@@ -24,15 +24,15 @@ public class GameActivity extends AppCompatActivity {
         //Set player names
         ((TextView)findViewById(R.id.playerOneName)).setText(Constants.PlayerOne.toUpperCase());
         ((TextView)findViewById(R.id.playerTwoName)).setText(Constants.PlayerTwo.toUpperCase());
-        ((TextView)findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.text_size));
-        ((TextView)findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.text_size));
-        ((TextView)findViewById(R.id.playerOnePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.point_size));
-        ((TextView)findViewById(R.id.playerPointSeparator)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.point_size));
-        ((TextView)findViewById(R.id.playerTwoPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.point_size));
-        ((Button)findViewById(R.id.addPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.button_text_size));
-        ((Button)findViewById(R.id.removePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.button_text_size));
-        ((Button)findViewById(R.id.history)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.button_text_size));
-        ((Button)findViewById(R.id.newSet)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.button_text_size));
+        ((TextView)findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((TextView)findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((TextView)findViewById(R.id.playerOnePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
+        ((TextView)findViewById(R.id.playerPointSeparator)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
+        ((TextView)findViewById(R.id.playerTwoPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
+        ((Button)findViewById(R.id.addPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((Button)findViewById(R.id.removePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((Button)findViewById(R.id.history)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((Button)findViewById(R.id.newSet)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
     }
 
     public void onResume()

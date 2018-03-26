@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Eurokegel</string>
+    <string name="app_name">Biliárd</string>
     <string name="title_activity_add_player">JÁTÉKOSOK MEGADÁSA:</string>
     <string name="title_activity_game">JÁTÉK:</string>
     <string name="title_activity_main">FŐMENÜ</string>
@@ -15,7 +15,7 @@
     <string name="MessageBoxTitleWarning">Figyelem!</string>
     <string name="NewGame">Új játék</string>
     <string name="AddPoint">PONTOK HOZZÁADÁSA</string>
-    <string name="RemovePoint">JAVÍTÁS</string>
+    <string name="RemovePoint">PONTLEVONÁS</string>
     <string name="History">JÁTÉKTÖRTÉNET</string>
     <string name="NewSet">ÚJ SZETT</string>
     <string name="EmptyString"> </string>
