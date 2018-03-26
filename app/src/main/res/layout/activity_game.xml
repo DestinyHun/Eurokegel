@@ -15,6 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="10"
+            android:baselineAligned="false"
             android:orientation="horizontal"
             android:weightSum="100">
 
@@ -31,7 +32,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:layout_weight="50"
-                    android:clickable="true"
                     android:gravity="top"
                     android:textAlignment="center" />
 
@@ -43,8 +43,6 @@
                     android:layout_marginRight="20dp"
                     android:layout_weight="50"
                     android:background="?attr/colorError"
-                    android:backgroundTint="?attr/colorError"
-                    android:clickable="true"
                     android:gravity="top"
                     android:textAlignment="center" />
 
@@ -55,7 +53,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="35"
+            android:layout_weight="37"
+            android:baselineAligned="false"
             android:orientation="horizontal"
             android:weightSum="100">
 
@@ -73,8 +72,6 @@
                     android:layout_marginLeft="20dp"
                     android:layout_weight="27"
                     android:gravity="top"
-                    android:clickable="true"
-                    android:text="0"
                     android:textAlignment="center" />
 
                 <TextView
@@ -83,18 +80,16 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="45"
                     android:gravity="top"
-                    android:text="-"
+                    android:text="@string/dash_sign"
                     android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/playerTwoPoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginEnd="20dp"
                     android:layout_weight="27"
                     android:gravity="top"
-                    android:clickable="true"
-                    android:text="0"
                     android:textAlignment="center" />
 
             </TableRow>
@@ -104,94 +99,77 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="14"
+            android:layout_weight="27"
+            android:layout_marginTop="5dp"
+            android:baselineAligned="false"
             android:orientation="horizontal">
 
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="100"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
                 android:weightSum="100">
 
                 <Button
-                    android:id="@+id/pointWhiteButton1"
+                    android:id="@+id/addPoint"
                     android:layout_height="match_parent"
-                    android:layout_weight="9.15"
+                    android:layout_weight="20"
                     android:layout_marginStart="4dp"
-                    android:background="@drawable/black_border"
-                    android:text="@string/point1" />
+                    android:background="@drawable/black_border_green"
+                    android:onClick="AddPoint_OnClick"
+                    android:text="@string/AddPoint" />
 
-                <Button
-                    android:id="@+id/pointWhiteButton2"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9.15"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/point2" />
+            </TableRow>
 
-                <Button
-                    android:id="@+id/pointWhiteButton3"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9.15"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/point3" />
+        </LinearLayout>
 
-                <Button
-                    android:id="@+id/pointWhiteButton4"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9.15"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/point4" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="17"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/pointWhiteButton5"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9.15"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/point5" />
-
-                <Button
-                android:id="@+id/pointWhiteButton6"
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="9.15"
-                android:layout_marginStart="4dp"
-                android:text="@string/point6" />
+                android:layout_weight="100"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:weightSum="100">
 
                 <Button
-                    android:id="@+id/pointWhiteButton7"
+                    android:id="@+id/newSet"
                     android:layout_height="match_parent"
-                    android:layout_weight="9.15"
+                    android:layout_weight="33.4"
                     android:layout_marginStart="4dp"
-                    android:text="@string/point7" />
+                    android:background="@drawable/black_border_yellow"
+                    android:onClick="NewSet_OnClick"
+                    android:text="@string/NewSet" />
 
                 <Button
-                    android:id="@+id/pointWhiteButton8"
+                    android:id="@+id/removePoint"
                     android:layout_height="match_parent"
-                    android:layout_weight="9.15"
+                    android:layout_weight="33.3"
                     android:layout_marginStart="4dp"
-                    android:text="@string/point8" />
+                    android:background="@drawable/black_border_red"
+                    android:onClick="RemovePoint_OnClick"
+                    android:text="@string/RemovePoint" />
 
                 <Button
-                    android:id="@+id/pointWhiteButton9"
+                    android:id="@+id/history"
                     android:layout_height="match_parent"
-                    android:layout_weight="9.15"
+                    android:layout_weight="33.3"
                     android:layout_marginStart="4dp"
-                    android:text="@string/point9" />
-
-                <Button
-                    android:id="@+id/pointWhiteButton10"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9.15"
-                    android:layout_marginStart="4dp"
-                    android:text="@string/point10" />
-
-                <Button
-                    android:id="@+id/pointWhiteButton11"
-                    android:layout_height="match_parent"
-                    android:layout_weight="9.15"
-                    android:layout_marginStart="4dp"
-                android:text="@string/point11" />
-
+                    android:background="@drawable/black_border_yellow"
+                    android:onClick="History_OnClick"
+                    android:text="@string/History" />
 
             </TableRow>
 
