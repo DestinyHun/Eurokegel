@@ -32,6 +32,7 @@ public class GameActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.addPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.button_text_size));
         ((Button)findViewById(R.id.removePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.button_text_size));
         ((Button)findViewById(R.id.history)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.button_text_size));
+        ((Button)findViewById(R.id.newSet)).setTextSize(TypedValue.COMPLEX_UNIT_SP, getResources().getDimension(R.dimen.button_text_size));
     }
 
     public void onResume()
