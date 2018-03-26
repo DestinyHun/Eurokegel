@@ -95,6 +95,12 @@ public class AddPlayerActivity extends AppCompatActivity {
         {
             public void onClick(View view)
             {
+
+                Constants.PlayerOne = "Aradszki Mihály";
+                Constants.PlayerTwo = "Bencsik Tibor";
+                Constants.BeginnerPlayer = "Bencsik Tibor";
+
+
                 Resources res = getResources();
                 if (Constants.PlayerOne.equals("")) {
                     MessageBox.CreateMessageBox(context, res.getString(R.string.MessageBoxTitleWarning), res.getString(R.string.PlyOneEmpty));
