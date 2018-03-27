@@ -241,7 +241,8 @@
                 android:layout_weight="9.15"
                 android:background="@drawable/black_border_white"
                 android:onClick="PlayerOnePointButtons_OnClick"
-                android:text="@string/point10" />
+                android:text="@string/point10"
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/pointRedButton6"
