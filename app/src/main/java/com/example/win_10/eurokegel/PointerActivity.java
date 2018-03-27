@@ -57,8 +57,6 @@ public class PointerActivity extends AppCompatActivity {
 
     public void SetPoints(int player, int pointsToSet)
     {
-        ReadMe("9kellasotetnek");
-
         int oldPoints = player == 1 ? Constants.PlayerOnePoints : Constants.PlayerTwoPoints;
 
         if (!Constants.AddPoint) {
@@ -82,8 +80,7 @@ public class PointerActivity extends AppCompatActivity {
     private void ReadMe(String szöveg)
     {
         Constants.ActualMediaPlayers = Constants.writerSays.get(szöveg);
-
-        Constants.PlayedSoundNumber = Constants.ActualMediaPlayers.size() - 1;
+        Constants.PlayedSoundNumber = 0;
         PlaySounds();
     }
 
@@ -92,14 +89,10 @@ public class PointerActivity extends AppCompatActivity {
         MediaPlayer actualMediaPlayer = Constants.ActualMediaPlayers.get(Constants.PlayedSoundNumber);
 
         actualMediaPlayer.start();
-
         actualMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             public void onCompletion(MediaPlayer mp) {
-                mp.release();
-
-                Constants.PlayedSoundNumber--;
-
-                if (Constants.PlayedSoundNumber >= 0)
+                Constants.PlayedSoundNumber++;
+                if (Constants.PlayedSoundNumber < Constants.ActualMediaPlayers.size())
                     PlaySounds();
             }
         });

@@ -36,34 +36,11 @@ public class MainActivity extends AppCompatActivity {
         Constants.InitSounds(MainActivity.this);
     }
 
-    private void ReadMe(String szöveg)
-    {
-        Constants.ActualMediaPlayers = Constants.writerSays.get(szöveg);
-        Constants.PlayedSoundNumber = 0;
-        PlaySounds();
-    }
-
-    private void PlaySounds() {
-
-        MediaPlayer actualMediaPlayer = Constants.ActualMediaPlayers.get(Constants.PlayedSoundNumber);
-
-        actualMediaPlayer.start();
-        actualMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            public void onCompletion(MediaPlayer mp) {
-                Constants.PlayedSoundNumber++;
-                if (Constants.PlayedSoundNumber < Constants.ActualMediaPlayers.size())
-                    PlaySounds();
-            }
-        });
-    }
-
     public void MagyarbiliardTextView_OnClick(View view)
     {
         Constants.GamePointLimit = 120;
         findViewById(R.id.magyarbiliardOkImageView).setVisibility(View.VISIBLE);
         findViewById(R.id.eurokegelOkImageView).setVisibility(View.INVISIBLE);
-
-        ReadMe("9kellasotetnek");
     }
 
     public void EurokegelTextView_OnClick(View view)
