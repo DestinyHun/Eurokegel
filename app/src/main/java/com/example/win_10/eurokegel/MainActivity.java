@@ -3,6 +3,7 @@ package com.example.win_10.eurokegel;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         Constants.InitSounds(MainActivity.this);
+
     }
 
     public void MagyarbiliardTextView_OnClick(View view)

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class PointerActivity extends AppCompatActivity {
@@ -27,36 +29,34 @@ public class PointerActivity extends AppCompatActivity {
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        for(int i=1;i<=22;i++)
-        {
+        for (int i = 1; i <= 22; i++) {
             int id = getResources().getIdentifier("pointWhiteButton" + Integer.toString(i), "id", context.getPackageName());
-            ((Button)findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP,Constants.DefaultTextSizeLarge);
+            ((Button) findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
 
             id = getResources().getIdentifier("pointRedButton" + Integer.toString(i), "id", context.getPackageName());
-            ((Button)findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
+            ((Button) findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
         }
-        ((TextView)findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
-        ((TextView)findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
-        ((TextView)findViewById(R.id.playerOneName)).setText(Constants.PlayerOne.toUpperCase());
-        ((TextView)findViewById(R.id.playerTwoName)).setText(Constants.PlayerTwo.toUpperCase());
+        ((TextView) findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((TextView) findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((TextView) findViewById(R.id.playerOneName)).setText(Constants.PlayerOne.toUpperCase());
+        ((TextView) findViewById(R.id.playerTwoName)).setText(Constants.PlayerTwo.toUpperCase());
     }
 
-    public void PlayerOnePointButtons_OnClick(View view)
-    {
-        this.SetPoints(1, Integer.parseInt(((Button)view).getText().toString()));
+    public void PlayerOnePointButtons_OnClick(View view) {
+        Constants.PointToAddPlayer = 1;
+        Constants.PointToAdd = Integer.parseInt(((Button) view).getText().toString());
 
         super.onBackPressed();
     }
 
-    public void PlayerTwoPointButtons_OnClick(View view)
-    {
-        this.SetPoints(2, Integer.parseInt(((Button)view).getText().toString()));
+    public void PlayerTwoPointButtons_OnClick(View view) {
+        Constants.PointToAddPlayer = 2;
+        Constants.PointToAdd = Integer.parseInt(((Button) view).getText().toString());
 
         super.onBackPressed();
     }
 
-    public void SetPoints(int player, int pointsToSet)
-    {
+    public void AddPoint(int player, int pointsToSet) {
         int oldPoints = player == 1 ? Constants.PlayerOnePoints : Constants.PlayerTwoPoints;
 
         if (!Constants.AddPoint) {
@@ -68,7 +68,7 @@ public class PointerActivity extends AppCompatActivity {
 
         if (newPoints > Constants.GamePointLimit)
             newPoints = Constants.GamePointLimit;
-        else if (newPoints <0)
+        else if (newPoints < 0)
             newPoints = 0;
 
         if (player == 1)
@@ -77,47 +77,68 @@ public class PointerActivity extends AppCompatActivity {
             Constants.PlayerTwoPoints = newPoints;
     }
 
-    private void ReadMe(String szöveg)
-    {
-        Constants.ActualMediaPlayers = Constants.writerSays.get(szöveg);
-        Constants.PlayedSoundNumber = 0;
-        PlaySounds();
+    private void SetPoints(int player, int pointsToSet) {
+        boolean newLeader = (player == 1 && Constants.PlayerOnePoints < Constants.PlayerTwoPoints && Constants.PlayerOnePoints + pointsToSet > Constants.PlayerTwoPoints)
+                || (player == 2 && Constants.PlayerOnePoints > Constants.PlayerTwoPoints && Constants.PlayerOnePoints < Constants.PlayerTwoPoints + pointsToSet);
+        boolean correction = !Constants.AddPoint;
+
+        if (player == 1) {
+            Constants.PlayerOnePoints += pointsToSet * (correction ? -1 : 1);
+            if (Constants.PlayerOnePoints < 0)
+                Constants.PlayerOnePoints = 0;
+            if (Constants.PlayerOnePoints > Constants.GamePointLimit)
+                Constants.PlayerOnePoints = Constants.GamePointLimit;
+
+            SpeechText(String.format(Locale.ENGLISH, "%d", pointsToSet) + " fehér" + (correction ? " törölve" : ""));
+
+            if (newLeader && Constants.PlayerOnePoints - Constants.PlayerTwoPoints != 0)
+                SpeechText(String.format(Locale.ENGLISH, "%d", (Constants.PlayerOnePoints - Constants.PlayerTwoPoints)) + "el új első a fehér.");
+
+            if (Constants.PlayerOnePoints == Constants.PlayerTwoPoints)
+                SpeechText("Egyenlő az állás.");
+
+            if (pointsToSet == 4 && Constants.PlayerOnePoints == 120)
+                SpeechText("A fehér elérte a 120 pontot, de valószínűleg piros golyóval, így nincs vége a partinak.");
+            else if (Constants.PlayerOnePoints == 120)
+                SpeechText("A fehér elérte a 120 pontot és megnyerte a szettet.");
+            else if (Constants.PlayerOnePoints > 100)
+                SpeechText("Még " + String.format(Locale.ENGLISH, "%d", (120 - Constants.PlayerOnePoints)) + " kell a fehérnek.");
+        }
+
+        if (player == 2) {
+            Constants.PlayerTwoPoints += pointsToSet * (correction ? -1 : 1);
+            if (Constants.PlayerTwoPoints < 0)
+                Constants.PlayerTwoPoints = 0;
+            if (Constants.PlayerTwoPoints > Constants.GamePointLimit)
+                Constants.PlayerTwoPoints = Constants.GamePointLimit;
+
+            SpeechText(String.format(Locale.ENGLISH, "%d", pointsToSet) + " sötét" + (correction ? " törölve" : ""));
+
+            if (newLeader && Constants.PlayerTwoPoints - Constants.PlayerOnePoints != 0)
+                SpeechText(String.format(Locale.ENGLISH, "%d", (Constants.PlayerTwoPoints - Constants.PlayerOnePoints)) + "el új első a sötét.");
+
+            if (Constants.PlayerOnePoints == Constants.PlayerTwoPoints)
+                SpeechText("Egyenlő az állás.");
+
+            if (pointsToSet == 4 && Constants.PlayerTwoPoints == 120)
+                SpeechText("A sötét elérte a 120 pontot, de valószínűleg piros golyóval, így nincs vége a partinak.");
+            else if (Constants.PlayerTwoPoints == 120)
+                SpeechText("A sötét elérte a 120 pontot és megnyerte a szettet.");
+            else if (Constants.PlayerTwoPoints > 100)
+                SpeechText("Még " + String.format(Locale.ENGLISH, "%d", (120 - Constants.PlayerTwoPoints)) + " kell a sötétnek.");
+        }
     }
 
-    private void PlaySounds() {
-
-        MediaPlayer actualMediaPlayer = Constants.ActualMediaPlayers.get(Constants.PlayedSoundNumber);
-
-        actualMediaPlayer.start();
-        actualMediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            public void onCompletion(MediaPlayer mp) {
-                Constants.PlayedSoundNumber++;
-                if (Constants.PlayedSoundNumber < Constants.ActualMediaPlayers.size())
-                    PlaySounds();
-            }
-        });
-    }
-
-    private void playAlarm() {
-
-
-        MediaPlayer mp = MediaPlayer.create(PointerActivity.this,
-                R.raw.hang_120pont);
-
-        this.getResources().getIdentifier("nameOfDrawable", "drawable", this.getPackageName());
-
-        MediaPlayer mp1 = MediaPlayer.create(PointerActivity.this,
-                R.raw.hang_0);
-        mp.start();
-        mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            public void onCompletion(MediaPlayer mp) {
-                mp.release();
-
-                MediaPlayer mp1 = MediaPlayer.create(PointerActivity.this,
-                        R.raw.hang_0);
-                mp1.start();
-            }
-        });
+    private void SpeechText(String Text) {
+        Constants.Tts.speak(Text, TextToSpeech.QUEUE_FLUSH, null);
+        while (Constants.Tts.isSpeaking()) {
+            // Freezes the application.
+        }
+        try {
+            Thread.sleep(500);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }
 }
