@@ -108,8 +108,8 @@ public class GameActivity extends AppCompatActivity {
 
     private void SetPoints(int player, int pointsToSet) {
         boolean correction = !Constants.AddPoint;
-        boolean newLeader = (player == 1 && Constants.PlayerOnePoints < Constants.PlayerTwoPoints && Constants.PlayerOnePoints + pointsToSet > Constants.PlayerTwoPoints)
-                || (player == 2 && Constants.PlayerOnePoints > Constants.PlayerTwoPoints && Constants.PlayerOnePoints < Constants.PlayerTwoPoints + pointsToSet)
+        boolean newLeader = (player == 1  && !correction && Constants.PlayerOnePoints < Constants.PlayerTwoPoints && Constants.PlayerOnePoints + pointsToSet > Constants.PlayerTwoPoints)
+                || (player == 2 && !correction && Constants.PlayerOnePoints > Constants.PlayerTwoPoints && Constants.PlayerOnePoints < Constants.PlayerTwoPoints + pointsToSet)
                 || (player == 1 && correction && Constants.PlayerOnePoints > Constants.PlayerTwoPoints && Constants.PlayerOnePoints - pointsToSet < Constants.PlayerTwoPoints)
                 || (player == 2 && correction && Constants.PlayerOnePoints < Constants.PlayerTwoPoints && Constants.PlayerOnePoints > Constants.PlayerTwoPoints - pointsToSet);
 
@@ -124,9 +124,9 @@ public class GameActivity extends AppCompatActivity {
 
             if (newLeader && Constants.PlayerOnePoints - Constants.PlayerTwoPoints != 0) {
                 if (correction)
-                    SpeechText(String.format(Locale.ENGLISH, "%d", (Constants.PlayerTwoPoints - Constants.PlayerOnePoints )) + "el új első a sötét.");
+                    SpeechText(String.format(Locale.ENGLISH, "%d", (Constants.PlayerTwoPoints - Constants.PlayerOnePoints )) + " ponttal új első a sötét.");
                 else
-                    SpeechText(String.format(Locale.ENGLISH, "%d", (Constants.PlayerOnePoints - Constants.PlayerTwoPoints)) + "el új első a fehér.");
+                    SpeechText(String.format(Locale.ENGLISH, "%d", (Constants.PlayerOnePoints - Constants.PlayerTwoPoints)) + " ponttal új első a fehér.");
             }
 
             if (Constants.PlayerOnePoints == Constants.PlayerTwoPoints)
@@ -154,9 +154,9 @@ public class GameActivity extends AppCompatActivity {
             if (newLeader && Constants.PlayerTwoPoints - Constants.PlayerOnePoints != 0)
             {
                 if (correction)
-                    SpeechText(String.format(Locale.ENGLISH, "%d", (Constants.PlayerOnePoints-Constants.PlayerTwoPoints)) + "el új első a fehér.");
+                    SpeechText(String.format(Locale.ENGLISH, "%d", (Constants.PlayerOnePoints-Constants.PlayerTwoPoints)) + " ponttal új első a fehér.");
                 else
-                    SpeechText(String.format(Locale.ENGLISH, "%d", (Constants.PlayerTwoPoints - Constants.PlayerOnePoints)) + "el új első a sötét.");
+                    SpeechText(String.format(Locale.ENGLISH, "%d", (Constants.PlayerTwoPoints - Constants.PlayerOnePoints)) + " ponttal új első a sötét.");
             }
 
             if (Constants.PlayerOnePoints == Constants.PlayerTwoPoints)
