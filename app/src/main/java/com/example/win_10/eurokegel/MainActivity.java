@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         Constants.GamePointLimit = 120;
         findViewById(R.id.magyarbiliardOkImageView).setVisibility(View.VISIBLE);
         findViewById(R.id.eurokegelOkImageView).setVisibility(View.INVISIBLE);
+        Constants.Tts.speak("A magyarbiliárd játék típus kiválasztva", TextToSpeech.QUEUE_FLUSH, null);
     }
 
     public void EurokegelTextView_OnClick(View view)
@@ -50,5 +51,6 @@ public class MainActivity extends AppCompatActivity {
         Constants.GamePointLimit = 100;
         findViewById(R.id.magyarbiliardOkImageView).setVisibility(View.INVISIBLE);
         findViewById(R.id.eurokegelOkImageView).setVisibility(View.VISIBLE);
+        Constants.Tts.speak("Az eurokégel játék típus kiválasztva", TextToSpeech.QUEUE_FLUSH, null);
     }
 }

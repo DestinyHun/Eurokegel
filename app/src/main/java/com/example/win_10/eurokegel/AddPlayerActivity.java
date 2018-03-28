@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -100,26 +101,26 @@ public class AddPlayerActivity extends AppCompatActivity {
             public void onClick(View view)
             {
 
-                Constants.PlayerOne = "Aradszki Mihály";
-                Constants.PlayerTwo = "Bencsik Tibor";
-                Constants.BeginnerPlayer = "Bencsik Tibor";
+//                Constants.PlayerOne = "Aradszki Mihály";
+//                Constants.PlayerTwo = "Bencsik Tibor";
+//                Constants.BeginnerPlayer = "Bencsik Tibor";
 
 
                 Resources res = getResources();
                 if (Constants.PlayerOne.equals("")) {
-                    MessageBox.CreateMessageBox(context, res.getString(R.string.MessageBoxTitleWarning), res.getString(R.string.PlyOneEmpty));
+                    Constants.Tts.speak("Továbblépés előtt add meg az első játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
                     return;
                 }
                 else if (Constants.PlayerTwo.equals("")) {
-                    MessageBox.CreateMessageBox(context, res.getString(R.string.MessageBoxTitleWarning), res.getString(R.string.PlyTwoEmpty));
+                    Constants.Tts.speak("Továbblépés előtt add meg a második játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
                     return;
                 }
                 else if (Constants.BeginnerPlayer.equals("")) {
-                    MessageBox.CreateMessageBox(context, res.getString(R.string.MessageBoxTitleWarning), res.getString(R.string.BeginnerPlyEmpty));
+                    Constants.Tts.speak("Továbblépés előtt add meg annak a játékosnak nevét, aki kezdeni fogja a játékot", TextToSpeech.QUEUE_FLUSH, null);
                     return;
                 }
                 else if (Constants.PlayerOne.equals(Constants.PlayerTwo)) {
-                    MessageBox.CreateMessageBox(context, res.getString(R.string.MessageBoxTitleWarning), res.getString(R.string.PlyOneEqualsPlyTwo));
+                    Constants.Tts.speak("Az két játékos neve nem lehet azonos", TextToSpeech.QUEUE_FLUSH, null);
                     return;
                 }
 
