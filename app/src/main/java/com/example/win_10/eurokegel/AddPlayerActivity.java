@@ -120,7 +120,7 @@ public class AddPlayerActivity extends AppCompatActivity {
                     return;
                 }
                 else if (Constants.PlayerOne.equals(Constants.PlayerTwo)) {
-                    Constants.Tts.speak("Az két játékos neve nem lehet azonos", TextToSpeech.QUEUE_FLUSH, null);
+                    Constants.Tts.speak("A két játékos neve nem lehet azonos", TextToSpeech.QUEUE_FLUSH, null);
                     return;
                 }
 
