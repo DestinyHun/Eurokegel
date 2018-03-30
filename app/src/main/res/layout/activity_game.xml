@@ -48,35 +48,47 @@
                 app:layout_rowSpan="2"
                 app:layout_rowWeight="20" />
 
-                <TextView
-                    android:id="@+id/playerOneName"
-                    android:layout_marginEnd="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/black_border_white"
-                    android:gravity="center_vertical"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    app:layout_column="0"
-                    app:layout_columnWeight="50"
-                    app:layout_row="0"
-                    app:layout_columnSpan="2"
-                    app:layout_rowWeight="15" />
+            <TextView
+                android:id="@+id/playerOneName"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="0"
+                app:layout_columnSpan="2"
+                app:layout_columnWeight="40"
+                app:layout_row="0"
+                app:layout_rowWeight="15" />
 
-                <TextView
-                    android:id="@+id/playerTwoName"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="@drawable/black_border_red"
-                    android:gravity="center_vertical"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                    app:layout_column="3"
-                    app:layout_columnWeight="50"
-                    app:layout_columnSpan="2"
-                    app:layout_row="0"
-                    app:layout_rowWeight="15" />
+            <TextView
+                android:id="@+id/playerTwoName"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="5dp"
+                android:background="@drawable/black_border_red"
+                android:gravity="center_vertical"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="3"
+                app:layout_columnSpan="2"
+                app:layout_columnWeight="40"
+                app:layout_row="0"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/playerOnePointHidden"
+                android:gravity="top"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="120"
+                app:layout_column="1"
+                app:layout_columnWeight="30"
+                app:layout_row="1"
+                app:layout_rowWeight="30" />
 
             <TextView
                 android:id="@+id/playerOnePoint"
@@ -85,22 +97,34 @@
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_column="1"
-                app:layout_columnWeight="50"
+                app:layout_columnWeight="30"
                 app:layout_row="1"
                 app:layout_rowWeight="30" />
 
             <TextView
                 android:id="@+id/SetStandTextView"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/black_border_darkgrey"
+                android:gravity="center_vertical"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:gravity="center_vertical"
                 app:layout_column="2"
                 app:layout_columnWeight="20"
-                android:layout_marginBottom="10dp"
                 app:layout_row="0"
                 app:layout_rowWeight="10" />
+
+            <TextView
+                android:id="@+id/playerTwoPointHidden"
+                android:gravity="top"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="120"
+                app:layout_column="3"
+                app:layout_columnWeight="30"
+                app:layout_row="1"
+                app:layout_rowWeight="45" />
 
             <TextView
                 android:id="@+id/playerTwoPoint"
@@ -109,7 +133,7 @@
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 app:layout_column="3"
-                app:layout_columnWeight="50"
+                app:layout_columnWeight="30"
                 app:layout_row="1"
                 app:layout_rowWeight="10" />
 
@@ -141,14 +165,14 @@
             <Space
                 android:layout_marginEnd="10dp"
                 app:layout_column="1"
-                app:layout_columnWeight="10"
+                app:layout_columnWeight="30"
                 app:layout_row="3"
                 app:layout_rowWeight="20" />
 
             <Space
                 android:layout_marginStart="10dp"
                 app:layout_column="3"
-                app:layout_columnWeight="10"
+                app:layout_columnWeight="30"
                 app:layout_row="3"
                 app:layout_rowWeight="20" />
 
@@ -159,7 +183,7 @@
                 android:onClick="NewSet_OnClick"
                 android:text="@string/NewSet"
                 app:layout_column="1"
-                app:layout_columnWeight="10"
+                app:layout_columnWeight="30"
                 app:layout_row="4"
                 app:layout_rowWeight="10" />
 
@@ -182,7 +206,7 @@
                 android:onClick="GiveUp_OnClick"
                 android:text="@string/GiveUp"
                 app:layout_column="3"
-                app:layout_columnWeight="10"
+                app:layout_columnWeight="30"
                 app:layout_row="4"
                 app:layout_rowWeight="10" />
 
