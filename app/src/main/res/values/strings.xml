@@ -14,9 +14,9 @@
     <string name="PlyOneEqualsPlyTwo">A két játékos neve nem lehet megegyező!</string>
     <string name="MessageBoxTitleWarning">Figyelem!</string>
     <string name="NewGame">Új játék</string>
-    <string name="AddPoint">PONTOK HOZZÁADÁSA</string>
-    <string name="RemovePoint">PONTLEVONÁS</string>
-    <string name="History">JÁTÉKTÖRTÉNET</string>
+    <string name="AddPoint">+</string>
+    <string name="RemovePoint">-</string>
+    <string name="History">TÖRTÉNET</string>
     <string name="NewSet">ÚJ SZETT</string>
     <string name="EmptyString"> </string>
     <string name="dash_sign">-</string>

@@ -101,22 +101,22 @@ public class AddPlayerActivity extends AppCompatActivity {
             public void onClick(View view)
             {
 
-//                Constants.PlayerOne = "Aradszki Mihály";
-//                Constants.PlayerTwo = "Bencsik Tibor";
-//                Constants.BeginnerPlayer = "Bencsik Tibor";
+                Constants.PlayerOne = "Aradszki Mihály";
+                Constants.PlayerTwo = "Bencsik Tibor";
+                Constants.BeginnerPlayer = "Bencsik Tibor";
 
 
                 Resources res = getResources();
                 if (Constants.PlayerOne.equals("")) {
-                    Constants.Tts.speak("Továbblépés előtt add meg az első játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
+                    Constants.Tts.speak("Add meg az első játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
                     return;
                 }
                 else if (Constants.PlayerTwo.equals("")) {
-                    Constants.Tts.speak("Továbblépés előtt add meg a második játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
+                    Constants.Tts.speak("Add meg a második játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
                     return;
                 }
                 else if (Constants.BeginnerPlayer.equals("")) {
-                    Constants.Tts.speak("Továbblépés előtt add meg annak a játékosnak nevét, aki kezdeni fogja a játékot", TextToSpeech.QUEUE_FLUSH, null);
+                    Constants.Tts.speak("Add meg a kezdő játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
                     return;
                 }
                 else if (Constants.PlayerOne.equals(Constants.PlayerTwo)) {

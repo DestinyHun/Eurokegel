@@ -25,34 +25,39 @@ public class PointerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pointer);
+
+        if (Constants.GamePointLimit == 120)
+            setContentView(R.layout.activity_pointer_magyarbiliard);
+        else
+            setContentView(R.layout.activity_pointer_eurokegel);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        for (int i = 1; i <= 22; i++) {
-            int id = getResources().getIdentifier("pointWhiteButton" + Integer.toString(i), "id", context.getPackageName());
-            ((Button) findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
-
-            id = getResources().getIdentifier("pointRedButton" + Integer.toString(i), "id", context.getPackageName());
-            ((Button) findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
+        if (Constants.GamePointLimit == 120) {
+            for (int i = 1; i <= 22; i++) {
+                int id = getResources().getIdentifier("pointButton" + Integer.toString(i), "id", context.getPackageName());
+                ((Button) findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
+                if (Constants.PointToAddPlayer == 1)
+                    ((Button) findViewById(id)).setBackgroundResource(R.drawable.black_border_white);
+                else
+                    ((Button) findViewById(id)).setBackgroundResource(R.drawable.black_border_red);
+            }
         }
-        ((TextView) findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
-        ((TextView) findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
-        ((TextView) findViewById(R.id.playerOneName)).setText(Constants.PlayerOne.toUpperCase());
-        ((TextView) findViewById(R.id.playerTwoName)).setText(Constants.PlayerTwo.toUpperCase());
+        else {
+            for (int i = 1; i <= 8; i++) {
+                int id = getResources().getIdentifier("pointButton" + Integer.toString(i*2), "id", context.getPackageName());
+                ((Button) findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
+                if (Constants.PointToAddPlayer == 1)
+                    ((Button) findViewById(id)).setBackgroundResource(R.drawable.black_border_white);
+                else
+                    ((Button) findViewById(id)).setBackgroundResource(R.drawable.black_border_red);
+            }
+        }
     }
 
-    public void PlayerOnePointButtons_OnClick(View view) {
-        Constants.PointToAddPlayer = 1;
+    public void PointButtons_OnClick(View view) {
         Constants.PointToAdd = Integer.parseInt(((Button) view).getText().toString());
-
-        super.onBackPressed();
-    }
-
-    public void PlayerTwoPointButtons_OnClick(View view) {
-        Constants.PointToAddPlayer = 2;
-        Constants.PointToAdd = Integer.parseInt(((Button) view).getText().toString());
-
+        GameActivity.ButtonsEnabled = false;
         super.onBackPressed();
     }
 

@@ -19,6 +19,7 @@ import java.util.TimerTask;
 public class GameActivity extends AppCompatActivity {
 
     Timer timer = new Timer();
+    static boolean ButtonsEnabled = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +35,10 @@ public class GameActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.playerOnePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
         ((TextView)findViewById(R.id.playerPointSeparator)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
         ((TextView)findViewById(R.id.playerTwoPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
-        ((Button)findViewById(R.id.addPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
-        ((Button)findViewById(R.id.removePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((Button)findViewById(R.id.addPointToPlayerOne)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
+        ((Button)findViewById(R.id.addPointToPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
+        ((Button)findViewById(R.id.removePointFromPlayerOne)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
+        ((Button)findViewById(R.id.removePointFromPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
         ((Button)findViewById(R.id.history)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
         ((Button)findViewById(R.id.newSet)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
     }
@@ -69,6 +72,7 @@ public class GameActivity extends AppCompatActivity {
         }
         else
         {
+            ButtonsEnabled = true;
             ((TextView)findViewById(R.id.playerOnePoint)).setText(String.format(Locale.ENGLISH, "%d",Constants.PlayerOnePoints));
             ((TextView)findViewById(R.id.playerTwoPoint)).setText(String.format(Locale.ENGLISH, "%d",Constants.PlayerTwoPoints));
         }
@@ -84,26 +88,58 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
-    public void AddPoint_OnClick(View view)
+    public void AddPointToPlayerOne_OnClick(View view)
     {
+        if (!ButtonsEnabled)
+            return;
         Constants.AddPoint = true;
+        Constants.PointToAddPlayer = 1;
         Intent intent = new Intent(GameActivity.this, PointerActivity.class);
         startActivity(intent);
     }
 
-    public void RemovePoint_OnClick(View view)
+    public void AddPointToPlayerTwo_OnClick(View view)
     {
+        if (!ButtonsEnabled)
+            return;
+        Constants.AddPoint = true;
+        Constants.PointToAddPlayer = 2;
+        Intent intent = new Intent(GameActivity.this, PointerActivity.class);
+        startActivity(intent);
+    }
+
+    public void RemovePointFromPlayerOne_OnClick(View view)
+    {
+        if (!ButtonsEnabled)
+            return;
+        SpeechText("Törlés", false);
         Constants.AddPoint = false;
+        Constants.PointToAddPlayer = 1;
+        Intent intent = new Intent(GameActivity.this, PointerActivity.class);
+        startActivity(intent);
+    }
+
+    public void RemovePointFromPlayerTwo_OnClick(View view)
+    {
+        if (!ButtonsEnabled)
+            return;
+        SpeechText("Törlés", false);
+        Constants.AddPoint = false;
+        Constants.PointToAddPlayer = 2;
         Intent intent = new Intent(GameActivity.this, PointerActivity.class);
         startActivity(intent);
     }
 
     public void History_OnClick(View view)
     {
+        if (!ButtonsEnabled)
+            return;
     }
 
     public void NewSet_OnClick(View view)
     {
+        if (!ButtonsEnabled)
+            return;
     }
 
     private void SetPoints(int player, int pointsToSet) {
@@ -171,18 +207,26 @@ public class GameActivity extends AppCompatActivity {
             else if (Constants.PlayerTwoPoints > Constants.GamePointLimit-20)
                 SpeechText("Még " + String.format(Locale.ENGLISH, "%d", (Constants.GamePointLimit - Constants.PlayerTwoPoints)) + " kell a sötétnek.");
         }
+
+        ButtonsEnabled = true;
     }
 
     private void SpeechText(String Text) {
-        Constants.Tts.speak(Text, TextToSpeech.QUEUE_FLUSH, null);
-        while (Constants.Tts.isSpeaking()) {
-            // Freezes the application.
-        }
-        try {
-            Thread.sleep(500);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        SpeechText(Text,true);
+    }
 
+    private void SpeechText(String Text, boolean waitForSpeech) {
+        Constants.Tts.speak(Text, TextToSpeech.QUEUE_FLUSH, null);
+
+        if (waitForSpeech) {
+            while (Constants.Tts.isSpeaking()) {
+                // Freezes the application.
+            }
+            try {
+                Thread.sleep(500);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
     }
 }

@@ -23,11 +23,11 @@ class Constants {
     static int PointToAddPlayer = 0;
     static float DefaultTextSizeNormal = -1;
     static float DefaultTextSizeLarge = -1;
+    static float DefaultTextSizeGreat = -1;
     static float DefaultTextSizeHuge = -1;
     static int GamePointLimit = 120;
     static TextToSpeech Tts;              // TTS engine
     static boolean SpeechReady = false;
-
 
     public static void SetDefaultTextSizes(TextView tv, Resources resources)
     {
@@ -35,6 +35,7 @@ class Constants {
         DefaultTextSizeNormal = sourceTextSize / resources.getDisplayMetrics().density;
 
         DefaultTextSizeLarge = DefaultTextSizeNormal * 1.8f;
+        DefaultTextSizeGreat = DefaultTextSizeNormal * 3f;
         DefaultTextSizeHuge = DefaultTextSizeNormal * 6;
     }
 
