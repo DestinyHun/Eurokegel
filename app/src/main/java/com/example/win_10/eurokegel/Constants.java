@@ -13,6 +13,7 @@ import java.util.Locale;
 import java.util.Map;
 
 class Constants {
+
     static String PlayerOne = "";
     static String PlayerTwo = "";
     static String BeginnerPlayer = "";
@@ -33,7 +34,8 @@ class Constants {
     static int playerTwoSetWins = 0;
     static String PointHistory = "<font color=#D5D5E4>22</font>";
 
-    public static void SetDefaultTextSizes(TextView tv, Resources resources)
+
+        public static void SetDefaultTextSizes(TextView tv, Resources resources)
     {
         float sourceTextSize = tv.getTextSize();
         DefaultTextSizeNormal = sourceTextSize / resources.getDisplayMetrics().density;

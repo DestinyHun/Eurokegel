@@ -1,5 +1,6 @@
 package com.example.win_10.eurokegel;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
@@ -24,6 +25,7 @@ public class GameActivity extends AppCompatActivity {
 
     Timer timer = new Timer();
     static boolean ButtonsEnabled = true;
+    Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,8 @@ public class GameActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.addPointToPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
         ((Button)findViewById(R.id.removePointFromPlayerOne)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
         ((Button)findViewById(R.id.removePointFromPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
-        ((Button)findViewById(R.id.giveUp)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
-        ((Button)findViewById(R.id.newSet)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((Button)findViewById(R.id.giveUpPlayerOne)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((Button)findViewById(R.id.giveUpPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
     }
 
     public void onResume()
@@ -148,16 +150,51 @@ public class GameActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void GiveUp_OnClick(View view)
+    public void GiveUpPlayerOne_OnClick(View view)
     {
         if (!ButtonsEnabled)
             return;
+
+//        MessageBox.MessageResult = MessageBox.MessageResults.WAITING;
+//        String text = Constants.PlayerOne  + " biztosan feladja a játékot?";
+//        SpeechText(text);
+//        MessageBox.CreateMessageBox(context, "Kérdés", text);
+//
+//        while (MessageBox.MessageResult == MessageBox.MessageResults.WAITING) {}
+//
+//        if (MessageBox.MessageResult == MessageBox.MessageResults.YES) {
+//            Constants.playerTwoSetWins += 1;
+//            StartNewSet();
+//            MessageBox.CreateMessageBox(context, "Kérdés", Constants.PlayerOne  + " feladta a játékot " +  Constants.PlayerTwo + " nyerte a szettet");
+//            onResume();
+//        }
     }
 
-    public void NewSet_OnClick(View view)
+    public void GiveUpPlayerTwo_OnClick(View view)
     {
         if (!ButtonsEnabled)
             return;
+
+//        MessageBox.MessageResult = MessageBox.MessageResults.WAITING;
+//        String text = Constants.PlayerTwo + " biztosan feladja a játékot?";
+//        SpeechText(text);
+//        MessageBox.CreateMessageBox(context, "Kérdés", text);
+//
+//        while (MessageBox.MessageResult == MessageBox.MessageResults.WAITING) {
+//        }
+//
+//        if (MessageBox.MessageResult == MessageBox.MessageResults.YES) {
+//            Constants.playerOneSetWins += 1;
+//            StartNewSet();
+//            MessageBox.CreateMessageBox(context, "Kérdés", Constants.PlayerTwo + " feladta a játékot " + Constants.PlayerOne + " nyerte a szettet");
+//            onResume();
+//        }
+    }
+
+    public void StartNewSet() {
+        Constants.PlayerOnePoints = 0;
+        Constants.PlayerTwoPoints = 0;
+        Constants.PointHistory = "<font color=#D5D5E4>22</font>";
     }
 
     private void SetPoints(int player, int pointsToSet) {

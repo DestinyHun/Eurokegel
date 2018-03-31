@@ -185,10 +185,10 @@
                 app:layout_rowWeight="40" />
 
             <Button
-                android:id="@+id/newSet"
+                android:id="@+id/giveUpPlayerOne"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_green"
-                android:onClick="NewSet_OnClick"
+                android:onClick="GiveUpPlayerOne_OnClick"
                 android:text="@string/GiveUp"
                 app:layout_column="1"
                 app:layout_columnWeight="30"
@@ -210,10 +210,10 @@
                 app:layout_rowWeight="5" />
 
             <Button
-                android:id="@+id/giveUp"
+                android:id="@+id/giveUpPlayerTwo"
                 android:layout_marginStart="10dp"
                 android:background="@drawable/black_border_green"
-                android:onClick="GiveUp_OnClick"
+                android:onClick="GiveUpPlayerTwo_OnClick"
                 android:text="@string/GiveUp"
                 app:layout_column="3"
                 app:layout_columnWeight="30"
