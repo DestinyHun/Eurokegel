@@ -31,6 +31,7 @@ class Constants {
     static boolean SpeechReady = false;
     static int playerOneSetWins = 0;
     static int playerTwoSetWins = 0;
+    static String PointHistory = "<font color=#D5D5E4>22</font>";
 
     public static void SetDefaultTextSizes(TextView tv, Resources resources)
     {

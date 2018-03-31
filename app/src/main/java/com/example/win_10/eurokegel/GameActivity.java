@@ -3,9 +3,13 @@ package com.example.win_10.eurokegel;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
+import android.graphics.drawable.ColorDrawable;
 import android.speech.tts.TextToSpeech;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.ScrollingMovementMethod;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
@@ -30,13 +34,15 @@ public class GameActivity extends AppCompatActivity {
         //Set player names
         ((TextView)findViewById(R.id.playerOneName)).setText(Constants.PlayerOne.toUpperCase());
         ((TextView)findViewById(R.id.playerTwoName)).setText(Constants.PlayerTwo.toUpperCase());
-        ((TextView)findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
-        ((TextView)findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((TextView)findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
+        ((TextView)findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
         ((TextView)findViewById(R.id.SetStandTextView)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
         ((TextView)findViewById(R.id.playerOnePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
         ((TextView)findViewById(R.id.playerTwoPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
         ((TextView)findViewById(R.id.playerOnePointHidden)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
         ((TextView)findViewById(R.id.playerTwoPointHidden)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
+        ((TextView)findViewById(R.id.historyTextView)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
+        ((TextView)findViewById(R.id.historyTextView)).setMovementMethod(ScrollingMovementMethod.getInstance());
         ((Button)findViewById(R.id.addPointToPlayerOne)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
         ((Button)findViewById(R.id.addPointToPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
         ((Button)findViewById(R.id.removePointFromPlayerOne)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
@@ -61,6 +67,9 @@ public class GameActivity extends AppCompatActivity {
                 if (plyPointToSet > Constants.GamePointLimit)
                     plyPointToSet = Constants.GamePointLimit;
                 ((TextView)findViewById(R.id.playerOnePoint)).setText(String.format(Locale.ENGLISH, "%d",plyPointToSet));
+                Constants.PointHistory = "<font color=#ffffff>" +
+                        (Constants.AddPoint ? "" : "-") +
+                        (String.format(Locale.ENGLISH, "%d",Constants.PointToAdd)) + "</font> <br/>" + Constants.PointHistory;
             }
             else {
                 plyPointToSet = Constants.PlayerTwoPoints + Constants.PointToAdd * (Constants.AddPoint ? 1 : -1);
@@ -69,7 +78,12 @@ public class GameActivity extends AppCompatActivity {
                 if (plyPointToSet > Constants.GamePointLimit)
                     plyPointToSet = Constants.GamePointLimit;
                 ((TextView)findViewById(R.id.playerTwoPoint)).setText(String.format(Locale.ENGLISH, "%d",plyPointToSet));
+                Constants.PointHistory = "<font color=#ff0000>" +
+                        (Constants.AddPoint ? "" : "-") +
+                        (String.format(Locale.ENGLISH, "%d",Constants.PointToAdd)) + "</font> <br/>" + Constants.PointHistory;
             }
+
+            ((TextView)findViewById(R.id.historyTextView)).setText(Html.fromHtml(Constants.PointHistory));
 
             timer = new Timer();
             timer.schedule(new RemindTask(), 1*100);
