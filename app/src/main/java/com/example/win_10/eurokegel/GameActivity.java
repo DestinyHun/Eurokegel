@@ -107,12 +107,14 @@ public class GameActivity extends AppCompatActivity {
         if (Constants.playerOneSetWins == Constants.GameSetLimit) {
             ButtonsEnabled = false;
             SpeechText("A fehér " + Constants.playerOneSetWins + " " + Constants.playerTwoSetWins + " arányban megnyerte a meccset");
+            Constants.StartNewGame(context);
         }
 
         if (Constants.playerTwoSetWins == Constants.GameSetLimit )
         {
             ButtonsEnabled = false;
             SpeechText("A sötét " + Constants.playerOneSetWins + " " + Constants.playerTwoSetWins + " arányban megnyerte a meccset");
+            Constants.StartNewGame(context);
         }
     }
 
@@ -225,13 +227,13 @@ public class GameActivity extends AppCompatActivity {
 
             if (Constants.GameType == Constants.GameTypes.RELAY)
             {
-                if (Constants.PlayerOnePoints < 120 && Constants.PlayerOnePoints + pointsToSet > 120)
+                if (Constants.PlayerOnePoints - pointsToSet < 120 && Constants.PlayerOnePoints >= 120)
                     SpeechText("A fehér elérte a 120 pontot, a második játékos következik játszani");
-                if (Constants.PlayerOnePoints < 240 && Constants.PlayerOnePoints + pointsToSet > 240)
+                if (Constants.PlayerOnePoints - pointsToSet < 240 && Constants.PlayerOnePoints  >= 240)
                     SpeechText("A fehér elérte a 120 pontot, a harmadik játékos következik játszani");
-                if (Constants.PlayerOnePoints < 360 && Constants.PlayerOnePoints + pointsToSet > 360)
+                if (Constants.PlayerOnePoints - pointsToSet < 360 && Constants.PlayerOnePoints  >= 360)
                     SpeechText("A fehér elérte a 120 pontot, a negyedik játékos következik játszani");
-                if (Constants.PlayerOnePoints < 480 && Constants.PlayerOnePoints + pointsToSet > 480)
+                if (Constants.PlayerOnePoints - pointsToSet < 480 && Constants.PlayerOnePoints  >= 480)
                     SpeechText("A fehér elérte a 120 pontot, az ötödik játékos következik játszani");
             }
 
@@ -279,13 +281,13 @@ public class GameActivity extends AppCompatActivity {
 
             if (Constants.GameType == Constants.GameTypes.RELAY)
             {
-                if (Constants.PlayerTwoPoints < 120 && Constants.PlayerTwoPoints + pointsToSet > 120)
+                if (Constants.PlayerTwoPoints - pointsToSet < 120 && Constants.PlayerTwoPoints  >= 120)
                     SpeechText("A sötét elérte a 120 pontot, a második játékos következik játszani");
-                if (Constants.PlayerTwoPoints < 240 && Constants.PlayerTwoPoints + pointsToSet > 240)
+                if (Constants.PlayerTwoPoints - pointsToSet < 240 && Constants.PlayerTwoPoints  >= 240)
                     SpeechText("A sötét elérte a 120 pontot, a harmadik játékos következik játszani");
-                if (Constants.PlayerTwoPoints < 360 && Constants.PlayerTwoPoints + pointsToSet > 360)
+                if (Constants.PlayerTwoPoints - pointsToSet < 360 && Constants.PlayerTwoPoints  >= 360)
                     SpeechText("A sötét elérte a 120 pontot, a negyedik játékos következik játszani");
-                if (Constants.PlayerTwoPoints < 480 && Constants.PlayerTwoPoints + pointsToSet > 480)
+                if (Constants.PlayerTwoPoints - pointsToSet < 480 && Constants.PlayerTwoPoints  >= 480)
                     SpeechText("A sötét elérte a 120 pontot, az ötödik játékos következik játszani");
             }
 
@@ -327,5 +329,10 @@ public class GameActivity extends AppCompatActivity {
                 System.out.println(e);
             }
         }
+    }
+
+    public void BackPressed()
+    {
+        super.onBackPressed();
     }
 }
