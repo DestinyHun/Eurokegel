@@ -16,7 +16,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="38"
+            android:layout_weight="19"
             android:orientation="horizontal"
             android:weightSum="100">
 
@@ -28,12 +28,12 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="10dp"
                 android:layout_weight="50"
-                android:text="@string/textview_player_one"
+                android:text="@string/textview_team_one"
                 android:gravity="center_vertical"
                 android:textColor="@android:color/black" />
 
             <Spinner
-                android:id="@+id/choosePlayerOneSpinner"
+                android:id="@+id/chooseTeamOnePlayerOneSpinner"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="20dp"
@@ -46,12 +46,75 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="38"
+            android:layout_weight="19"
             android:orientation="horizontal"
             android:weightSum="100">
 
             <TextView
-                android:id="@+id/playerTwoName"
+                android:id="@+id/playerOneName1"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="50"
+                android:text="@string/EmptyString"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/black" />
+
+            <Spinner
+                android:id="@+id/chooseTeamOnePlayerTwoSpinner"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="50"
+                android:gravity="center_vertical"
+                android:background="@drawable/black_border" />
+        </TableRow>
+
+        <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="19"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/playerTwoName"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="50"
+            android:text="@string/textview_team_two"
+            android:gravity="center_vertical"
+            android:textColor="@android:color/black" />
+
+        <Spinner
+            android:id="@+id/chooseTeamTwoPlayerOneSpinner"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="50"
+            android:textSize="30sp"
+            android:gravity="center_vertical"
+            android:background="@drawable/black_border" />
+
+    </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="19"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:id="@+id/playerTwoName1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="10dp"
@@ -59,17 +122,17 @@
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
                 android:layout_weight="50"
-                android:text="@string/textview_player_two"
+                android:text="@string/EmptyString"
                 android:gravity="center_vertical"
                 android:textColor="@android:color/black" />
 
             <Spinner
-                android:id="@+id/choosePlayerTwoSpinner"
+                android:id="@+id/chooseTeamTwoPlayerTwoSpinner"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginTop="5dp"
-                android:layout_weight="50"
+                android:layout_weight="25"
                 android:textSize="30sp"
                 android:gravity="center_vertical"
                 android:background="@drawable/black_border" />

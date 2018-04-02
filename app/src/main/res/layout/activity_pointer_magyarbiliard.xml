@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
@@ -9,305 +9,370 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <android.support.v7.widget.GridLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary"
-            android:layout_marginTop="2dp"
-            android:layout_marginStart="2dp"
-            android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/colorPrimary"
             android:weightSum="100"
             app:rowCount="5">
 
-            <Button
-            android:id="@+id/pointButton1"
-            app:layout_column="0"
-            app:layout_row="0"
-            app:layout_columnWeight="15"
-            app:layout_rowWeight="15"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/black_border_white"
-            android:onClick="PointButtons_OnClick"
-            android:text="@string/point1"
-            android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton2"
-                app:layout_column="2"
-                app:layout_row="0"
-                app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+            <TextView
+                android:id="@+id/pointTextView1"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point1"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="0"
+                app:layout_columnWeight="15"
+                app:layout_row="0"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView2"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point2"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton3"
-                app:layout_column="3"
-                app:layout_row="0"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="2"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+                app:layout_row="0"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView3"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point3"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton4"
-                app:layout_column="4"
-                app:layout_row="0"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="3"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+                app:layout_row="0"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView4"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point4"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton5"
-                app:layout_column="5"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="4"
+                app:layout_columnWeight="15"
                 app:layout_row="0"
-                app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView5"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point5"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton6"
-                app:layout_column="0"
-                app:layout_row="1"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="5"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+                app:layout_row="0"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView6"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point6"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton7"
-                app:layout_column="2"
-                app:layout_row="1"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="0"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+                app:layout_row="1"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView7"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point7"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton8"
-                app:layout_column="3"
-                app:layout_row="1"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="2"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+                app:layout_row="1"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView8"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point8"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton9"
-                app:layout_column="4"
-                app:layout_row="1"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="3"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+                app:layout_row="1"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView9"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point9"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton10"
-                app:layout_column="5"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="4"
+                app:layout_columnWeight="15"
                 app:layout_row="1"
-                app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView10"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point10"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton11"
-                app:layout_column="0"
-                app:layout_row="2"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="5"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+                app:layout_row="1"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView11"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point11"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton12"
-                app:layout_column="2"
-                app:layout_row="2"
-                app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
-                android:text="@string/point12"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton13"
-                app:layout_column="3"
-                app:layout_row="2"
-                app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
-                android:text="@string/point13"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton14"
-                app:layout_column="4"
-                app:layout_row="2"
-                app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
-                android:text="@string/point14"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton15"
-                app:layout_column="5"
-                app:layout_row="2"
-                app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
-                android:text="@string/point15"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/pointButton16"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_column="0"
-                app:layout_row="3"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
-                android:text="@string/point16"
-                android:textStyle="bold" />
+                app:layout_row="2"
+                app:layout_rowWeight="15" />
 
-            <Button
-                android:id="@+id/pointButton17"
+            <TextView
+                android:id="@+id/pointTextView12"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point12"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_column="2"
-                app:layout_row="3"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
-                android:text="@string/point17"
-                android:textStyle="bold" />
+                app:layout_row="2"
+                app:layout_rowWeight="15" />
 
-            <Button
-                android:id="@+id/pointButton18"
+            <TextView
+                android:id="@+id/pointTextView13"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point13"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_column="3"
-                app:layout_row="3"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
-                android:text="@string/point18"
-                android:textStyle="bold" />
+                app:layout_row="2"
+                app:layout_rowWeight="15" />
 
-            <Button
-                android:id="@+id/pointButton19"
+            <TextView
+                android:id="@+id/pointTextView14"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point14"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_column="4"
-                app:layout_row="3"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
-                android:text="@string/point19"
-                android:textStyle="bold" />
+                app:layout_row="2"
+                app:layout_rowWeight="15" />
 
-            <Button
-                android:id="@+id/pointButton20"
+            <TextView
+                android:id="@+id/pointTextView15"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point15"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_column="5"
+                app:layout_columnWeight="15"
+                app:layout_row="2"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView16"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point16"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="0"
+                app:layout_columnWeight="15"
                 app:layout_row="3"
-                app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
-                android:text="@string/point20"
-                android:textStyle="bold" />
+                app:layout_rowWeight="15" />
 
-            <Button
-                android:id="@+id/pointButton21"
+            <TextView
+                android:id="@+id/pointTextView17"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point17"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
                 app:layout_column="2"
-                app:layout_row="4"
                 app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
-                android:text="@string/point21"
-                android:textStyle="bold" />
+                app:layout_row="3"
+                app:layout_rowWeight="15" />
 
-            <Button
-                android:id="@+id/pointButton22"
-                app:layout_column="4"
-                app:layout_row="4"
-                app:layout_columnWeight="15"
-                app:layout_rowWeight="15"
-                android:layout_marginEnd="10dp"
+            <TextView
+                android:id="@+id/pointTextView18"
                 android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
                 android:background="@drawable/black_border_white"
-                android:onClick="PointButtons_OnClick"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point18"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="3"
+                app:layout_columnWeight="15"
+                app:layout_row="3"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView19"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point19"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="4"
+                app:layout_columnWeight="15"
+                app:layout_row="3"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView20"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point20"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="5"
+                app:layout_columnWeight="15"
+                app:layout_row="3"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView21"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
+                android:text="@string/point21"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="2"
+                app:layout_columnWeight="15"
+                app:layout_row="4"
+                app:layout_rowWeight="15" />
+
+            <TextView
+                android:id="@+id/pointTextView22"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:onClick="PointTextViews_OnClick"
                 android:text="@string/point22"
-                android:textStyle="bold" />
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_column="4"
+                app:layout_columnWeight="15"
+                app:layout_row="4"
+                app:layout_rowWeight="15" />
 
         </android.support.v7.widget.GridLayout>
 

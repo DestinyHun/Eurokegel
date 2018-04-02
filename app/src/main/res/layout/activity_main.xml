@@ -75,7 +75,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.10"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="50dp"
+            android:layout_marginBottom="15dp"
             android:background="@color/colorPrimary"
             android:weightSum="100"
             android:orientation="horizontal">
@@ -119,32 +119,58 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/newGameButton"
+        android:id="@+id/newGameButtonSingle"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_weight="0.15"
+        android:background="@drawable/black_border_green"
+        android:onClick="NewGameSingle_OnClick"
+        android:text="@string/NewGameSingle"
+        android:visibility="visible"
+        tools:clickable="false"
+        tools:layout_editor_absoluteX="16dp" />
+
+        <Button
+            android:id="@+id/newGameButtonPair"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="40dp"
+            android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
             android:layout_weight="0.15"
             android:background="@drawable/black_border_green"
-            android:text="@string/NewGame"
+            android:onClick="NewGamePair_OnClick"
+            android:text="@string/NewGamePair"
             android:visibility="visible"
             tools:clickable="false"
             tools:layout_editor_absoluteX="16dp" />
 
-        <ImageView
-            android:id="@+id/imageView3"
+        <Button
+            android:id="@+id/newGameButtonRelay"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.10"
-            android:contentDescription="@string/EmptyString"
-            android:visibility="visible" />
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="40dp"
+            android:layout_weight="0.15"
+            android:background="@drawable/black_border_green"
+            android:onClick="NewGameRelay_OnClick"
+            android:text="@string/NewGameRelay"
+            android:visibility="visible"
+            tools:clickable="false"
+            tools:layout_editor_absoluteX="16dp" />
 
         <TextView
             android:id="@+id/copyRight"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.10"
+            android:layout_marginTop="10dp"
             android:gravity="bottom"
             android:text="@string/textview_copyright"
             android:textAlignment="center" />

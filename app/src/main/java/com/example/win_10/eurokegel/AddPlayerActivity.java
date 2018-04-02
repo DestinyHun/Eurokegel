@@ -17,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +26,10 @@ import java.util.Collections;
 public class AddPlayerActivity extends AppCompatActivity {
 
     final Context context = this;
+    String teamOnePlayerOne = "";
+    String teamOnePlayerTwo = "";
+    String teamTwoPlayerTwo = "";
+    String teamTwoPlayerOne = "";
 
     private ArrayList<String> allPlayerSpinnerArray = new ArrayList<>(Arrays.asList(
             "", "Kurta László", "Csasztvan Zsolt", "Simcsik László", "Vári László",
@@ -34,101 +39,160 @@ public class AddPlayerActivity extends AppCompatActivity {
             "Ifj. Sáfián György", "Carcangiu Roberto", "Bencsik Tibor", "Salát Mátyás"
     ));
 
-    private ArrayList<String> actualPlayersSpinnerArray = new ArrayList<>(Arrays.asList(
-            new String[]{""}
-    ));
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_player);
+        if (Constants.GameType == Constants.GameTypes.PAIR)
+            setContentView(R.layout.activity_add_player_pair);
+        else
+            setContentView(R.layout.activity_add_player);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 
-        ((Button)findViewById(R.id.beginGameButton)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((Button) findViewById(R.id.beginGameButton)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
 
-        //SELECT PLAYER ONE SPINNER
-        Spinner spinner = findViewById(R.id.choosePlayerOneSpinner);
-        Collections.sort(allPlayerSpinnerArray);
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray);
-        spinner.setAdapter(spinnerArrayAdapter);
+        ((TextView) findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
+        ((TextView) findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                actualPlayersSpinnerArray = new ArrayList<>(Arrays.asList(
-                        "", adapterView.getItemAtPosition(i).toString(), ((Spinner) findViewById(R.id.choosePlayerTwoSpinner)).getSelectedItem().toString()
-                ));
-                SetSelectedPlayersSpinner();
-                Constants.PlayerOne = adapterView.getItemAtPosition(i).toString();
-            }
 
-            public void onNothingSelected(AdapterView<?> adapterView) {}
-        });
+        if (Constants.GameType == Constants.GameTypes.PAIR) {
+            //SELECT PLAYER ONE SPINNER
+            Spinner spinner = findViewById(R.id.chooseTeamOnePlayerOneSpinner);
+            Collections.sort(allPlayerSpinnerArray);
+            SpinnerAdapter spinnerArrayAdapter = new SpinnerAdapter(this,
+                    android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
+            spinner.setAdapter(spinnerArrayAdapter);
 
-        //SELECT PLAYER TWO SPINNER
-        spinner = findViewById(R.id.choosePlayerTwoSpinner);
-        spinnerArrayAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray);
-        spinner.setAdapter(spinnerArrayAdapter);
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    teamOnePlayerOne = adapterView.getItemAtPosition(i).toString();
+                    if (teamOnePlayerOne.length() > 0)
+                        teamOnePlayerOne = teamOnePlayerOne.split("\\s+")[0];
+                }
 
-        this.SetSelectedPlayersSpinner();
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                }
+            });
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                actualPlayersSpinnerArray = new ArrayList<>(Arrays.asList(
-                        "", adapterView.getItemAtPosition(i).toString(), ((Spinner) findViewById(R.id.choosePlayerOneSpinner)).getSelectedItem().toString()
-                ));
-                SetSelectedPlayersSpinner();
-                Constants.PlayerTwo = adapterView.getItemAtPosition(i).toString();
-            }
+            //SELECT PLAYER TWO SPINNER
+            spinner = findViewById(R.id.chooseTeamOnePlayerTwoSpinner);
+            spinnerArrayAdapter = new SpinnerAdapter(this,
+                    android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
+            spinner.setAdapter(spinnerArrayAdapter);
 
-            public void onNothingSelected(AdapterView<?> adapterView) {}
-        });
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    teamOnePlayerTwo = adapterView.getItemAtPosition(i).toString();
+                    if (teamOnePlayerTwo.length() > 0)
+                        teamOnePlayerTwo = teamOnePlayerTwo.split("\\s+")[0];
+                }
 
-        //SELECT BEGINNER PLAYER SPINNER
-        spinner = findViewById(R.id.chooseBeginnerPlayerSpinner);
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                }
+            });
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Constants.BeginnerPlayer = adapterView.getItemAtPosition(i).toString();
-            }
+            //SELECT PLAYER ONE SPINNER
+            spinner = findViewById(R.id.chooseTeamTwoPlayerOneSpinner);
+            Collections.sort(allPlayerSpinnerArray);
+            spinnerArrayAdapter = new SpinnerAdapter(this,
+                    android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
+            spinner.setAdapter(spinnerArrayAdapter);
 
-            public void onNothingSelected(AdapterView<?> adapterView) {}
-        });
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    teamTwoPlayerOne = adapterView.getItemAtPosition(i).toString();
+                    if (teamTwoPlayerOne.length() > 0)
+                        teamTwoPlayerOne = teamTwoPlayerOne.split("\\s+")[0];
+                }
 
-        findViewById(R.id.beginGameButton).setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View view)
-            {
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                }
+            });
+
+            //SELECT PLAYER TWO SPINNER
+            spinner = findViewById(R.id.chooseTeamTwoPlayerTwoSpinner);
+            spinnerArrayAdapter = new SpinnerAdapter(this,
+                    android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
+            spinner.setAdapter(spinnerArrayAdapter);
+
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    teamTwoPlayerTwo = adapterView.getItemAtPosition(i).toString();
+                    if (teamTwoPlayerTwo.length() > 0)
+                        teamTwoPlayerTwo = teamTwoPlayerTwo.split("\\s+")[0];
+                }
+
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                }
+            });
+        } else {
+            ((TextView) findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
+            ((TextView) findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
+
+            //SELECT PLAYER ONE SPINNER
+            Spinner spinner = findViewById(R.id.choosePlayerOneSpinner);
+            Collections.sort(allPlayerSpinnerArray);
+            SpinnerAdapter spinnerArrayAdapter = new SpinnerAdapter(this,
+                    android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
+            spinner.setAdapter(spinnerArrayAdapter);
+
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    Constants.PlayerOne = adapterView.getItemAtPosition(i).toString();
+                }
+
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                }
+            });
+
+            //SELECT PLAYER TWO SPINNER
+            spinner = findViewById(R.id.choosePlayerTwoSpinner);
+            spinnerArrayAdapter = new SpinnerAdapter(this,
+                    android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
+            spinner.setAdapter(spinnerArrayAdapter);
+
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    Constants.PlayerTwo = adapterView.getItemAtPosition(i).toString();
+                }
+
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                }
+            });
+        }
+
+        findViewById(R.id.beginGameButton).setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
 
 //                Constants.PlayerOne = "Aradszki Mihály";
 //                Constants.PlayerTwo = "Bencsik Tibor";
-//                Constants.BeginnerPlayer = "Bencsik Tibor";
+//
 
 
-                Resources res = getResources();
-                if (Constants.PlayerOne.equals("")) {
-                    Constants.Tts.speak("Add meg az első játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
-                    return;
+                if (Constants.GameType == Constants.GameTypes.PAIR) {
+                    if (teamOnePlayerOne.equals("")) {
+                        Constants.Tts.speak("Add meg az első csapat első játékosának nevét", TextToSpeech.QUEUE_FLUSH, null);
+                        return;
+                    } else if (teamOnePlayerTwo.equals("")) {
+                        Constants.Tts.speak("Add meg az első csapat második játékosának nevét", TextToSpeech.QUEUE_FLUSH, null);
+                        return;
+                    } else if (teamTwoPlayerOne.equals("")) {
+                        Constants.Tts.speak("Add meg a második csapat első játékosának nevét", TextToSpeech.QUEUE_FLUSH, null);
+                        return;
+                    } else if (teamTwoPlayerTwo.equals("")) {
+                        Constants.Tts.speak("Add meg a második csapat második játékosának nevét", TextToSpeech.QUEUE_FLUSH, null);
+                        return;
+                    }
+                    Constants.PlayerOne = teamOnePlayerOne + " - " + teamOnePlayerTwo;
+                    Constants.PlayerTwo = teamTwoPlayerOne + " - " + teamTwoPlayerTwo;
                 }
-                else if (Constants.PlayerTwo.equals("")) {
-                    Constants.Tts.speak("Add meg a második játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
-                    return;
-                }
-                else if (Constants.BeginnerPlayer.equals("")) {
-                    Constants.Tts.speak("Add meg a kezdő játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
-                    return;
-                }
-                else if (Constants.PlayerOne.equals(Constants.PlayerTwo)) {
-                    Constants.Tts.speak("A két játékos neve nem lehet azonos", TextToSpeech.QUEUE_FLUSH, null);
-                    return;
-                }
-
-                if (!Constants.PlayerOne.equals(Constants.BeginnerPlayer))
-                {
-                    String tempName = Constants.PlayerOne;
-                    Constants.PlayerOne = Constants.PlayerTwo;
-                    Constants.PlayerTwo = tempName;
+                else {
+                    if (Constants.PlayerOne.equals("")) {
+                        Constants.Tts.speak("Add meg az első játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
+                        return;
+                    } else if (Constants.PlayerTwo.equals("")) {
+                        Constants.Tts.speak("Add meg a második játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
+                        return;
+                    }
                 }
 
                 Intent intent = new Intent(AddPlayerActivity.this, GameActivity.class);
@@ -136,13 +200,4 @@ public class AddPlayerActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void SetSelectedPlayersSpinner() {
-        Spinner spinner = findViewById(R.id.chooseBeginnerPlayerSpinner);
-        Collections.sort(actualPlayersSpinnerArray);
-        ArrayAdapter<String>spinnerArrayAdapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_dropdown_item, actualPlayersSpinnerArray);
-        spinner.setAdapter(spinnerArrayAdapter);
-    }
-
 }

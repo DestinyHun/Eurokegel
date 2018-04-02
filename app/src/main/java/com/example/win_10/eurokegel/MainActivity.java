@@ -24,16 +24,10 @@ public class MainActivity extends AppCompatActivity {
 
         Object t = getResources();
         Constants.SetDefaultTextSizes(new TextView(this), getResources());
-        ((Button)findViewById(R.id.newGameButton)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((Button)findViewById(R.id.newGameButtonSingle)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((Button)findViewById(R.id.newGameButtonPair)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+        ((Button)findViewById(R.id.newGameButtonRelay)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
 
-        findViewById(R.id.newGameButton).setOnClickListener(new View.OnClickListener()
-        {
-            public void onClick(View view)
-            {
-                Intent intent = new Intent(MainActivity.this, AddPlayerActivity.class);
-                startActivity(intent);
-            }
-        });
         Constants.InitSounds(MainActivity.this);
 
     }
@@ -43,6 +37,11 @@ public class MainActivity extends AppCompatActivity {
         Constants.GamePointLimit = 120;
         findViewById(R.id.magyarbiliardOkImageView).setVisibility(View.VISIBLE);
         findViewById(R.id.eurokegelOkImageView).setVisibility(View.INVISIBLE);
+        findViewById(R.id.newGameButtonRelay).setVisibility(View.VISIBLE);
+
+        ((Button)findViewById(R.id.newGameButtonSingle)).setText("Magyarbiliárd egyéni játék");
+        ((Button)findViewById(R.id.newGameButtonPair)).setText("Magyarbiliárd páros játék");
+
         Constants.Tts.speak("A magyarbiliárd játék típus kiválasztva", TextToSpeech.QUEUE_FLUSH, null);
     }
 
@@ -51,6 +50,33 @@ public class MainActivity extends AppCompatActivity {
         Constants.GamePointLimit = 100;
         findViewById(R.id.magyarbiliardOkImageView).setVisibility(View.INVISIBLE);
         findViewById(R.id.eurokegelOkImageView).setVisibility(View.VISIBLE);
+        findViewById(R.id.newGameButtonRelay).setVisibility(View.INVISIBLE);
+
+        ((Button)findViewById(R.id.newGameButtonSingle)).setText("Eurokegel egyéni játék");
+        ((Button)findViewById(R.id.newGameButtonPair)).setText("Eurokegel páros játék");
+
         Constants.Tts.speak("Az eurokégel játék típus kiválasztva", TextToSpeech.QUEUE_FLUSH, null);
+    }
+
+    public void NewGameSingle_OnClick(View view)
+    {
+        Constants.GameType = Constants.GameTypes.SINGLE;
+        Intent intent = new Intent(MainActivity.this, AddPlayerActivity.class);
+        startActivity(intent);
+    }
+
+    public void NewGamePair_OnClick(View view)
+    {
+        Constants.GameType = Constants.GameTypes.PAIR;
+        Intent intent = new Intent(MainActivity.this, AddPlayerActivity.class);
+        startActivity(intent);
+    }
+
+    public void NewGameRelay_OnClick(View view)
+    {
+        Constants.GamePointLimit = 600;
+        Constants.GameType = Constants.GameTypes.RELAY;
+        Intent intent = new Intent(MainActivity.this, AddPlayerActivity.class);
+        startActivity(intent);
     }
 }

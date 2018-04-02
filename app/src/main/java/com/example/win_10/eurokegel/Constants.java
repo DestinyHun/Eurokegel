@@ -14,9 +14,14 @@ import java.util.Map;
 
 class Constants {
 
+    public enum GameTypes {
+        SINGLE,
+        PAIR,
+        RELAY
+    }
+
     static String PlayerOne = "";
     static String PlayerTwo = "";
-    static String BeginnerPlayer = "";
     static int PlayerOnePoints = 0;
     static int PlayerTwoPoints = 0;
     static Boolean AddPoint = true;
@@ -33,6 +38,9 @@ class Constants {
     static int playerOneSetWins = 0;
     static int playerTwoSetWins = 0;
     static String PointHistory = "<font color=#D5D5E4>22</font>";
+    static GameTypes GameType;
+    static Boolean RedBallShot = false;
+    static int GameSetLimit = 2;
 
 
         public static void SetDefaultTextSizes(TextView tv, Resources resources)
@@ -44,6 +52,17 @@ class Constants {
         DefaultTextSizeLarge = DefaultTextSizeNormal * 1.8f;
         DefaultTextSizeGreat = DefaultTextSizeNormal * 3f;
         DefaultTextSizeHuge = DefaultTextSizeNormal * 6;
+    }
+
+    public static void StartNewSet(int playerWins) {
+        if (playerWins == 1)
+            Constants.playerOneSetWins += 1;
+        else
+            Constants.playerTwoSetWins += 1;
+
+        Constants.PlayerOnePoints = 0;
+        Constants.PlayerTwoPoints = 0;
+        Constants.PointHistory = "<font color=#D5D5E4>22</font>";
     }
 
     public static void InitSounds(Context context) {
