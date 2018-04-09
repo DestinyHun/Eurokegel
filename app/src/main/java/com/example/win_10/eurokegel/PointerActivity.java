@@ -67,6 +67,7 @@ public class PointerActivity extends AppCompatActivity {
                 MessageBox.MessageAsk = MessageBox.MessageAsks.REDBALLSHOT;
                 MessageBox.CreateMessageBox(context, "Kérdés", "Ha piros golyót talált a játékos nyomja meg az igen gombot");
             }
+            BackPressed();
         }
         else
             BackPressed();
