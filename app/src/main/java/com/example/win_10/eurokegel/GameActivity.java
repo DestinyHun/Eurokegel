@@ -1,5 +1,6 @@
 package com.example.win_10.eurokegel;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -154,7 +155,7 @@ public class GameActivity extends AppCompatActivity {
     {
         if (!ButtonsEnabled)
             return;
-        SpeechText("Törlés", false);
+        SpeechText("Törlés", false, false);
         Constants.AddPoint = false;
         Constants.RedBallShot = false;
         Constants.PointToAddPlayer = 1;
@@ -166,7 +167,7 @@ public class GameActivity extends AppCompatActivity {
     {
         if (!ButtonsEnabled)
             return;
-        SpeechText("Törlés", false);
+        SpeechText("Törlés", false, false);
         Constants.AddPoint = false;
         Constants.RedBallShot = false;
         Constants.PointToAddPlayer = 2;
@@ -179,9 +180,14 @@ public class GameActivity extends AppCompatActivity {
         if (!ButtonsEnabled)
             return;
 
-        SpeechText("Amennyiben az IGEN lehetőséget választja " + Constants.PlayerOne + " feladja a játékot");
-        MessageBox.MessageAsk = MessageBox.MessageAsks.PLYONEGIVEUP;
-        MessageBox.CreateMessageBox(context, "Kérdés", Constants.PlayerOne + " biztosan feladja a játékot?");
+        MessageBoxActivity.YesButtonText = "FELADÁS";
+        MessageBoxActivity.NoButtonText = "MÉGSE";
+        MessageBoxActivity.MessageType = MessageBoxActivity.MessageTypes.PLYONEGIVEUP;
+        MessageBoxActivity.MessageText =  "Amennyiben a 'FELADÁS' lehetőséget választja " + Constants.PlayerOne + " feladja a játékot!";
+        MessageBoxActivity.TextToSpeechString = "Amennyiben a 'FELADÁS' lehetőséget választja " + Constants.PlayerOne + " feladja a játékot";
+        MessageBoxActivity.WaitForSpeech = false;
+        Intent intent = new Intent(GameActivity.this, MessageBoxActivity.class);
+        startActivity(intent);
     }
 
     public void GiveUpPlayerTwo_OnClick(View view)
@@ -189,9 +195,14 @@ public class GameActivity extends AppCompatActivity {
         if (!ButtonsEnabled)
             return;
 
-        SpeechText("Amennyiben az IGEN lehetőséget választja " + Constants.PlayerTwo + " feladja a játékot");
-        MessageBox.MessageAsk = MessageBox.MessageAsks.PLYTWOGIVEUP;
-        MessageBox.CreateMessageBox(context, "Kérdés", Constants.PlayerTwo + " biztosan feladja a játékot?");
+        MessageBoxActivity.YesButtonText = "FELADÁS";
+        MessageBoxActivity.NoButtonText = "MÉGSE";
+        MessageBoxActivity.MessageType = MessageBoxActivity.MessageTypes.PLYTWOGIVEUP;
+        MessageBoxActivity.MessageText =  "Amennyiben a 'FELADÁS' lehetőséget választja " + Constants.PlayerTwo + " feladja a játékot!";
+        MessageBoxActivity.TextToSpeechString = "Amennyiben a 'FELADÁS' lehetőséget választja " + Constants.PlayerTwo + " feladja a játékot";
+        MessageBoxActivity.WaitForSpeech = false;
+        Intent intent = new Intent(GameActivity.this, MessageBoxActivity.class);
+        startActivity(intent);
     }
 
     private void SetPoints(int player, int pointsToSet) {
@@ -211,7 +222,7 @@ public class GameActivity extends AppCompatActivity {
                 Constants.PlayerOnePoints = Constants.GamePointLimit;
                 if (Constants.RedBallShot && (Constants.GamePointLimit == 120 || Constants.GamePointLimit == 600)) {
                     Constants.PlayerOnePoints -= 1;
-                    SpeechText("Mivel piros golyó találatával lett meg a 120 pont, ezért");
+                    SpeechText("Mivel piros golyó találatával lett meg a 120 pont, ezért", true, false);
                 }
             }
 
@@ -244,9 +255,15 @@ public class GameActivity extends AppCompatActivity {
 
                 ((GameActivity)context).runOnUiThread(new Runnable() {
                     public void run() {
-                        SpeechText("Amennyiben az eredmény helyes, nyomja meg az igen gombot");
-                        MessageBox.MessageAsk = MessageBox.MessageAsks.PLYONEWIN;
-                        MessageBox.CreateMessageBox(context, "Kérdés", "Amennyiben az eredmény helyes, nyomja meg az igen gombot");
+
+                        MessageBoxActivity.YesButtonText = "SZETT VÉGE";
+                        MessageBoxActivity.NoButtonText = "EREDMÉNY JAVÍTÁSA";
+                        MessageBoxActivity.MessageType = MessageBoxActivity.MessageTypes.PLYONEWIN;
+                        MessageBoxActivity.MessageText =  "Amennyiben az eredmény helyes, nyomja meg a 'SZETT VÉGE' gombot!";
+                        MessageBoxActivity.TextToSpeechString = "Amennyiben az eredmény helyes, nyomja meg a 'SZETT VÉGE' gombot";
+                        MessageBoxActivity.WaitForSpeech = true;
+                        Intent intent = new Intent(GameActivity.this, MessageBoxActivity.class);
+                        startActivity(intent);
                     }
                 });
             }
@@ -264,7 +281,7 @@ public class GameActivity extends AppCompatActivity {
                 Constants.PlayerTwoPoints = Constants.GamePointLimit;
                 if (Constants.RedBallShot && (Constants.GamePointLimit == 120 || Constants.GamePointLimit == 600)) {
                     Constants.PlayerTwoPoints -= 1;
-                    SpeechText("Mivel piros golyó találatával lett meg a 120 pont, ezért");
+                    SpeechText("Mivel piros golyó találatával lett meg a 120 pont, ezért", true, false);
                 }
             }
 
@@ -299,9 +316,15 @@ public class GameActivity extends AppCompatActivity {
 
                 ((GameActivity)context).runOnUiThread(new Runnable() {
                     public void run() {
-                        SpeechText("Amennyiben az eredmény helyes, nyomja meg az igen gombot");
-                        MessageBox.MessageAsk = MessageBox.MessageAsks.PLYTWOWIN;
-                        MessageBox.CreateMessageBox(context, "Kérdés", "Amennyiben az eredmény helyes, nyomja meg az igen gombot");
+
+                        MessageBoxActivity.YesButtonText = "SZETT VÉGE";
+                        MessageBoxActivity.NoButtonText = "EREDMÉNY JAVÍTÁSA";
+                        MessageBoxActivity.MessageType = MessageBoxActivity.MessageTypes.PLYTWOWIN;
+                        MessageBoxActivity.MessageText =  "Amennyiben az eredmény helyes, nyomja meg a 'SZETT VÉGE' gombot!";
+                        MessageBoxActivity.TextToSpeechString = "Amennyiben az eredmény helyes, nyomja meg a 'SZETT VÉGE' gombot";
+                        MessageBoxActivity.WaitForSpeech = true;
+                        Intent intent = new Intent(GameActivity.this, MessageBoxActivity.class);
+                        startActivity(intent);
                     }
                 });
             }
@@ -313,20 +336,22 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void SpeechText(String Text) {
-        SpeechText(Text,true);
+        SpeechText(Text,true, true);
     }
 
-    private void SpeechText(String Text, boolean waitForSpeech) {
+    private void SpeechText(String Text, boolean waitForSpeech, boolean pauseAfter) {
         Constants.Tts.speak(Text, TextToSpeech.QUEUE_FLUSH, null);
 
         if (waitForSpeech) {
             while (Constants.Tts.isSpeaking()) {
                 // Freezes the application.
             }
-            try {
-                Thread.sleep(500);
-            } catch (Exception e) {
-                System.out.println(e);
+            if (pauseAfter) {
+                try {
+                    Thread.sleep(500);
+                } catch (Exception e) {
+                    System.out.println(e);
+                }
             }
         }
     }

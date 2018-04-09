@@ -31,12 +31,18 @@ public class AddPlayerActivity extends AppCompatActivity {
     String teamTwoPlayerTwo = "";
     String teamTwoPlayerOne = "";
 
+//    private ArrayList<String> allPlayerSpinnerArray = new ArrayList<>(Arrays.asList(
+//            "", "Kurta László", "Csasztvan Zsolt", "Simcsik László", "Vári László",
+//            "Bíró Imre", "Hőgyes Benjámin", "Tomka Lajos", "Aradszki Mihály",
+//            "Tímár András", "Kocsor Sándor", "Szűcs Sándor", "Zsákai Tibor",
+//            "Kiss Attila", "Gyurkó László", "Turi Zoltán", "Kincses László",
+//            "Ifj. Sáfián György", "Carcangiu Roberto", "Bencsik Tibor", "Salát Mátyás"
+//    ));
+
     private ArrayList<String> allPlayerSpinnerArray = new ArrayList<>(Arrays.asList(
-            "", "Kurta László", "Csasztvan Zsolt", "Simcsik László", "Vári László",
-            "Bíró Imre", "Hőgyes Benjámin", "Tomka Lajos", "Aradszki Mihály",
-            "Tímár András", "Kocsor Sándor", "Szűcs Sándor", "Zsákai Tibor",
-            "Kiss Attila", "Gyurkó László", "Turi Zoltán", "Kincses László",
-            "Ifj. Sáfián György", "Carcangiu Roberto", "Bencsik Tibor", "Salát Mátyás"
+            "", "Berke Gyula", "Gyurkó László", "Gyurkó Mihály", "Palyik Győzike", "Németh László"
+            ,"Filadelfi Misike","Kiss Janos", "Sztojka Dezső", "Dandé István", "Békési Károly", "Komáromi Ferenc",
+            "ifj. Sztojka László"
     ));
 
     @Override
@@ -163,10 +169,8 @@ public class AddPlayerActivity extends AppCompatActivity {
         findViewById(R.id.beginGameButton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-//                Constants.PlayerOne = "Aradszki Mihály";
-//                Constants.PlayerTwo = "Bencsik Tibor";
-//
-
+                Constants.PlayerOne = "Filadelfi Misike";
+                Constants.PlayerTwo = "Palyik Győzike";
 
                 if (Constants.GameType == Constants.GameTypes.PAIR) {
                     if (teamOnePlayerOne.equals("")) {

@@ -1,6 +1,7 @@
 package com.example.win_10.eurokegel;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -23,6 +24,7 @@ import java.util.Map;
 public class PointerActivity extends AppCompatActivity {
 
     final Context context = this;
+    static boolean MustBack = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,14 @@ public class PointerActivity extends AppCompatActivity {
                 SetTextViewProperties(i);
     }
 
+    public void onResume() {  // After a pause OR at startup
+        super.onResume();
+        if (MustBack) {
+            MustBack = false;
+            BackPressed();
+        }
+    }
+
     public void SetTextViewProperties(int number) {
         int id = getResources().getIdentifier("pointTextView" + Integer.toString(number), "id", context.getPackageName());
         ((TextView) findViewById(id)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
@@ -63,9 +73,15 @@ public class PointerActivity extends AppCompatActivity {
         if (Constants.PointToAdd == 4 && Constants.AddPoint && Constants.GamePointLimit > 100) {
             if ((Constants.PointToAddPlayer == 1 && Constants.GamePointLimit - Constants.PlayerOnePoints <= 4)
                 || (Constants.PointToAddPlayer == 2 && Constants.GamePointLimit - Constants.PlayerTwoPoints <= 4)) {
-                SpeechText("Ha piros golyót talált a játékos nyomja meg az igen gombot");
-                MessageBox.MessageAsk = MessageBox.MessageAsks.REDBALLSHOT;
-                MessageBox.CreateMessageBox(context, "Kérdés", "Ha piros golyót talált a játékos nyomja meg az igen gombot");
+
+                MessageBoxActivity.YesButtonText = "PIROS GOLYÓ";
+                MessageBoxActivity.NoButtonText = "KÉT KETTES FA";
+                MessageBoxActivity.MessageType = MessageBoxActivity.MessageTypes.REDBALLSHOT;
+                MessageBoxActivity.MessageText =  "Ha piros golyót talált a játékos nyomja meg a 'PIROS GOLYÓ' gombot!";
+                MessageBoxActivity.TextToSpeechString = "Ha piros golyót talált a játékos nyomja meg a 'PIROS GOLYÓ' gombot";
+                MessageBoxActivity.WaitForSpeech = false;
+                Intent intent = new Intent(PointerActivity.this, MessageBoxActivity.class);
+                startActivity(intent);
             }
             BackPressed();
         }

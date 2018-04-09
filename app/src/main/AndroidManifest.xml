@@ -32,12 +32,11 @@
             android:name=".GameActivity"
             android:label="JÁTÉK"
             android:parentActivityName=".AddPlayerActivity" />
-
         <activity
             android:name=".PointerActivity"
             android:label="PONTOZÁS"
             android:parentActivityName=".GameActivity" />
-
+        <activity android:name=".MessageBoxActivity"></activity>
     </application>
 
 </manifest>

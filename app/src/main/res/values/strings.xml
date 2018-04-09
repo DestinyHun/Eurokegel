@@ -8,7 +8,7 @@
     <string name="textview_team_one">1. CSAPAT JÁTÉKOSAI (fehér):</string>
     <string name="textview_team_two">2. CSAPAT JÁTÉKOSAI (sötét):</string>
     <string name="textview_beginner_player">A JÁTÉKOT KEZDI:</string>
-    <string name="textview_copyright">© 2018 Csasztvan Zsolt</string>
+    <string name="textview_copyright">© 2018 Zsolt Csasztvan</string>
     <string name="button_begin_game">JÁTÉK INDÍTÁSA</string>
     <string name="PlyOneEmpty">Töltsd ki az első játékos nevét!</string>
     <string name="PlyTwoEmpty">Töltsd ki a második játékos nevét!</string>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.win_10.eurokegel.MessageBoxActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_weight="100"
+            android:background="@color/colorPrimary"
+            app:orientation="horizontal"
+            app:rowCount="2">
+
+
+            <TextView
+                android:id="@+id/MessageTextView"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="15dp"
+                android:background="@drawable/black_border_white"
+                android:gravity="center_vertical"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:maxLines="4"
+                android:ellipsize="end"
+                android:layout_width="match_parent"
+                app:layout_column="0"
+                app:layout_columnSpan="2"
+                app:layout_row="0"
+                app:layout_rowWeight="80" />
+
+
+            <TextView
+                android:id="@+id/Yes"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="40dp"
+                android:gravity="center_vertical"
+                android:textAlignment="center"
+                android:background="@drawable/black_border_green"
+                android:onClick="Yes_OnClick"
+                android:text="@string/Yes"
+                app:layout_column="0"
+                app:layout_columnWeight="50"
+                app:layout_row="1"
+                app:layout_rowWeight="10" />
+
+
+            <TextView
+                android:id="@+id/No"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="40dp"
+                android:gravity="center_vertical"
+                android:textAlignment="center"
+                android:background="@drawable/black_border_red"
+                android:onClick="No_OnClick"
+                android:text="@string/No"
+                app:layout_column="1"
+                app:layout_columnWeight="50"
+                app:layout_row="1"
+                app:layout_rowWeight="10" />
+
+        </android.support.v7.widget.GridLayout>
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>
