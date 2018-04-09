@@ -61,14 +61,20 @@ public class MessageBoxActivity extends AppCompatActivity {
     public void Yes_OnClick(View view)
     {
         if (MessageType == MessageTypes.PLYONEGIVEUP) {
-            Constants.playerTwoSetWins += 1;
+            if (Constants.GameType == Constants.GameTypes.RELAY)
+                Constants.playerTwoSetWins = 5;
+            else
+                Constants.playerTwoSetWins += 1;
             Constants.PlayerTwoPoints = Constants.GamePointLimit;
             TextToSpeechString = Constants.PlayerOne + " feladta a szettet";
             SpeechText();
             Constants.SetEnds = true;
         }
         else if (MessageType == MessageTypes.PLYTWOGIVEUP) {
-            Constants.playerOneSetWins += 1;
+            if (Constants.GameType == Constants.GameTypes.RELAY)
+                Constants.playerOneSetWins = 5;
+            else
+                Constants.playerOneSetWins += 1;
             Constants.PlayerOnePoints = Constants.GamePointLimit;
             TextToSpeechString = Constants.PlayerTwo + " feladta a szettet";
             SpeechText();

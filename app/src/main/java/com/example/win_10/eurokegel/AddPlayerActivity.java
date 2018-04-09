@@ -69,6 +69,18 @@ public class AddPlayerActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.playedSetNumber)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
 
         //SELECT SETS SPINNER
+        if (Constants.GameType == Constants.GameTypes.RELAY) {
+            playedSetArray = new ArrayList<>(Arrays.asList(
+                    "5"
+            ));
+
+            allPlayerSpinnerArray = new ArrayList<>(Arrays.asList(
+                    "", "Doboz", "VB Söröző"
+            ));
+
+            ((TextView) findViewById(R.id.playerOneName)).setText("FEHÉR CSAPAT:");
+            ((TextView) findViewById(R.id.playerTwoName)).setText("SÖTÉT CSAPAT:");
+        }
         Spinner spinner = findViewById(R.id.playedSetNumberSpinner);
         Collections.sort(playedSetArray);
         SpinnerAdapter spinnerArrayAdapter = new SpinnerAdapter(this,

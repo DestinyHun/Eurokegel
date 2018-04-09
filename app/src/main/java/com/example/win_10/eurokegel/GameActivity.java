@@ -19,6 +19,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -288,14 +290,22 @@ public class GameActivity extends AppCompatActivity {
 
             if (Constants.GameType == Constants.GameTypes.RELAY)
             {
-                if (Constants.PlayerOnePoints - pointsToSet < 120 && Constants.PlayerOnePoints >= 120)
-                    SpeechText("A fehér elérte a 120 pontot, a második játékos következik játszani");
-                if (Constants.PlayerOnePoints - pointsToSet < 240 && Constants.PlayerOnePoints  >= 240)
-                    SpeechText("A fehér elérte a 120 pontot, a harmadik játékos következik játszani");
-                if (Constants.PlayerOnePoints - pointsToSet < 360 && Constants.PlayerOnePoints  >= 360)
-                    SpeechText("A fehér elérte a 120 pontot, a negyedik játékos következik játszani");
-                if (Constants.PlayerOnePoints - pointsToSet < 480 && Constants.PlayerOnePoints  >= 480)
-                    SpeechText("A fehér elérte a 120 pontot, az ötödik játékos következik játszani");
+                if (Constants.PlayerOnePoints - pointsToSet < 120 && Constants.PlayerOnePoints >= 120) {
+                    SpeechText("A fehér csapat elérte a 120 pontot, a második játékos következik játszani");
+                    Constants.playerOneSetWins += 1;
+                }
+                if (Constants.PlayerOnePoints - pointsToSet < 240 && Constants.PlayerOnePoints  >= 240){
+                    SpeechText("A fehér csapat elérte a 240 pontot, a harmadik játékos következik játszani");
+                    Constants.playerOneSetWins += 1;
+                }
+                if (Constants.PlayerOnePoints - pointsToSet < 360 && Constants.PlayerOnePoints  >= 360){
+                    SpeechText("A fehér csapat elérte a 360 pontot, a negyedik játékos következik játszani");
+                    Constants.playerOneSetWins += 1;
+                }
+                if (Constants.PlayerOnePoints - pointsToSet < 480 && Constants.PlayerOnePoints  >= 480){
+                    SpeechText("A fehér csapat elérte a 480 pontot, az ötödik játékos következik játszani");
+                    Constants.playerOneSetWins += 1;
+                }
             }
 
             if (Constants.PlayerOnePoints == Constants.GamePointLimit) {
@@ -348,14 +358,22 @@ public class GameActivity extends AppCompatActivity {
 
             if (Constants.GameType == Constants.GameTypes.RELAY)
             {
-                if (Constants.PlayerTwoPoints - pointsToSet < 120 && Constants.PlayerTwoPoints  >= 120)
-                    SpeechText("A sötét elérte a 120 pontot, a második játékos következik játszani");
-                if (Constants.PlayerTwoPoints - pointsToSet < 240 && Constants.PlayerTwoPoints  >= 240)
-                    SpeechText("A sötét elérte a 120 pontot, a harmadik játékos következik játszani");
-                if (Constants.PlayerTwoPoints - pointsToSet < 360 && Constants.PlayerTwoPoints  >= 360)
-                    SpeechText("A sötét elérte a 120 pontot, a negyedik játékos következik játszani");
-                if (Constants.PlayerTwoPoints - pointsToSet < 480 && Constants.PlayerTwoPoints  >= 480)
-                    SpeechText("A sötét elérte a 120 pontot, az ötödik játékos következik játszani");
+                if (Constants.PlayerTwoPoints - pointsToSet < 120 && Constants.PlayerTwoPoints  >= 120){
+                    SpeechText("A sötét csapat elérte a 120 pontot, a második játékos következik játszani");
+                    Constants.playerTwoSetWins += 1;
+                }
+                if (Constants.PlayerTwoPoints - pointsToSet < 240 && Constants.PlayerTwoPoints  >= 240){
+                    SpeechText("A sötét csapat elérte a 240 pontot, a harmadik játékos következik játszani");
+                    Constants.playerTwoSetWins += 1;
+                }
+                if (Constants.PlayerTwoPoints - pointsToSet < 360 && Constants.PlayerTwoPoints  >= 360){
+                    SpeechText("A sötét csapat elérte a 360 pontot, a negyedik játékos következik játszani");
+                    Constants.playerTwoSetWins += 1;
+                }
+                if (Constants.PlayerTwoPoints - pointsToSet < 480 && Constants.PlayerTwoPoints  >= 480){
+                    SpeechText("A sötét csapat elérte a 480 pontot, az ötödik játékos következik játszani");
+                    Constants.playerTwoSetWins += 1;
+                }
             }
 
             if (Constants.PlayerTwoPoints == Constants.GamePointLimit) {
@@ -382,6 +400,15 @@ public class GameActivity extends AppCompatActivity {
                 SpeechText("Még " + String.format(Locale.ENGLISH, "%d", (Constants.GamePointLimit - Constants.PlayerTwoPoints)) + " pont kell a sötétnek.");
         }
 
+        if (Constants.GameType == Constants.GameTypes.RELAY) {
+            ((GameActivity)context).runOnUiThread(new Runnable() {
+                public void run() {
+
+                    ((TextView)findViewById(R.id.SetStandTextView)).setText(
+                            String.format(Locale.ENGLISH, "%d",Constants.playerOneSetWins) + " : " + String.format(Locale.ENGLISH, "%d",Constants.playerTwoSetWins));
+                }
+            });
+        }
         ButtonsEnabled = true;
     }
 
