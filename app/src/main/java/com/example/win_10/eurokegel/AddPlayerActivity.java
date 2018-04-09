@@ -45,6 +45,10 @@ public class AddPlayerActivity extends AppCompatActivity {
             "ifj. Sztojka László"
     ));
 
+    private ArrayList<String> playedSetArray = new ArrayList<>(Arrays.asList(
+            "2","3"
+    ));
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,13 +62,29 @@ public class AddPlayerActivity extends AppCompatActivity {
 
         ((TextView) findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
         ((TextView) findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
+        ((TextView) findViewById(R.id.playedSetNumber)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
 
+        //SELECT SETS SPINNER
+        Spinner spinner = findViewById(R.id.playedSetNumberSpinner);
+        Collections.sort(playedSetArray);
+        SpinnerAdapter spinnerArrayAdapter = new SpinnerAdapter(this,
+                android.R.layout.simple_spinner_dropdown_item, playedSetArray.toArray(new String[0]));
+        spinner.setAdapter(spinnerArrayAdapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                Constants.GameSetLimit = Integer.parseInt(adapterView.getItemAtPosition(i).toString());
+            }
+
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
 
         if (Constants.GameType == Constants.GameTypes.PAIR) {
             //SELECT PLAYER ONE SPINNER
-            Spinner spinner = findViewById(R.id.chooseTeamOnePlayerOneSpinner);
+            spinner = findViewById(R.id.chooseTeamOnePlayerOneSpinner);
             Collections.sort(allPlayerSpinnerArray);
-            SpinnerAdapter spinnerArrayAdapter = new SpinnerAdapter(this,
+            spinnerArrayAdapter = new SpinnerAdapter(this,
                     android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
             spinner.setAdapter(spinnerArrayAdapter);
 
@@ -135,9 +155,9 @@ public class AddPlayerActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
 
             //SELECT PLAYER ONE SPINNER
-            Spinner spinner = findViewById(R.id.choosePlayerOneSpinner);
+            spinner = findViewById(R.id.choosePlayerOneSpinner);
             Collections.sort(allPlayerSpinnerArray);
-            SpinnerAdapter spinnerArrayAdapter = new SpinnerAdapter(this,
+            spinnerArrayAdapter = new SpinnerAdapter(this,
                     android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
             spinner.setAdapter(spinnerArrayAdapter);
 

@@ -67,7 +67,7 @@ class Constants {
 
     public static void StartNewGame(Context context) {
         Constants.playerOneSetWins = 0;
-        Constants.playerOneSetWins = 0;
+        Constants.playerTwoSetWins = 0;
         Constants.PlayerOnePoints = 0;
         Constants.PlayerTwoPoints = 0;
         Constants.PointHistory = "<font color=#D5D5E4>22</font>";

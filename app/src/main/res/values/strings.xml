@@ -18,6 +18,7 @@
     <string name="NewGameSingle">Magyarbiliárd egyéni játék</string>
     <string name="NewGamePair">Magyarbiliárd páros játék</string>
     <string name="NewGameRelay">Magyarbiliárd staféta játék</string>
+    <string name="played_sets">HÁNY SZETTRE JÁTSZÁK:</string>
     <string name="AddPoint">+</string>
     <string name="RemovePoint">-</string>
     <string name="GiveUp">FELADÁS</string>
