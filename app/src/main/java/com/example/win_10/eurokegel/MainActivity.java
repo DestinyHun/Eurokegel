@@ -12,6 +12,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
@@ -60,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void NewGameSingle_OnClick(View view)
     {
+        if (!IsValidDate())
+            return;
+
         Constants.GameType = Constants.GameTypes.SINGLE;
         Intent intent = new Intent(MainActivity.this, AddPlayerActivity.class);
         startActivity(intent);
@@ -67,6 +74,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void NewGamePair_OnClick(View view)
     {
+        if (!IsValidDate())
+            return;
+
         Constants.GameType = Constants.GameTypes.PAIR;
         Intent intent = new Intent(MainActivity.this, AddPlayerActivity.class);
         startActivity(intent);
@@ -74,9 +84,24 @@ public class MainActivity extends AppCompatActivity {
 
     public void NewGameRelay_OnClick(View view)
     {
+        if (!IsValidDate())
+            return;
+
         Constants.GamePointLimit = 600;
         Constants.GameType = Constants.GameTypes.RELAY;
         Intent intent = new Intent(MainActivity.this, AddPlayerActivity.class);
         startActivity(intent);
+    }
+
+    public boolean IsValidDate() {
+        Date currentDate = Calendar.getInstance().getTime();
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2018);
+        cal.set(Calendar.MONTH, 3);
+        cal.set(Calendar.DAY_OF_MONTH, 28);
+        Date validDate = cal.getTime();
+
+        return validDate.after(currentDate);
     }
 }
