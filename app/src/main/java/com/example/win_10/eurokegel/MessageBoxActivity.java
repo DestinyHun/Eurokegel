@@ -61,10 +61,18 @@ public class MessageBoxActivity extends AppCompatActivity {
     public void Yes_OnClick(View view)
     {
         if (MessageType == MessageTypes.PLYONEGIVEUP) {
-            Constants.StartNewSet(2);
+            Constants.playerTwoSetWins += 1;
+            Constants.PlayerTwoPoints = Constants.GamePointLimit;
+            TextToSpeechString = Constants.PlayerOne + " feladta a szettet";
+            SpeechText();
+            Constants.SetEnds = true;
         }
         else if (MessageType == MessageTypes.PLYTWOGIVEUP) {
-            Constants.StartNewSet(1);
+            Constants.playerOneSetWins += 1;
+            Constants.PlayerOnePoints = Constants.GamePointLimit;
+            TextToSpeechString = Constants.PlayerTwo + " feladta a szettet";
+            SpeechText();
+            Constants.SetEnds = true;
         }
         else if (MessageType == MessageTypes.REDBALLSHOT) {
             Constants.RedBallShot = true;
@@ -73,12 +81,14 @@ public class MessageBoxActivity extends AppCompatActivity {
         else if (MessageType == MessageTypes.PLYONEWIN) {
             if (Constants.PlayerTwoPoints == Constants.GamePointLimit)
                 Constants.PlayerTwoPoints = Constants.GamePointLimit-1;
-            Constants.StartNewSet(1);
+                Constants.playerOneSetWins += 1;
+            Constants.SetEnds = true;
         }
         else if (MessageType == MessageTypes.PLYTWOWIN) {
             if (Constants.PlayerOnePoints == Constants.GamePointLimit)
                 Constants.PlayerOnePoints = Constants.GamePointLimit-1;
-            Constants.StartNewSet(2);
+            Constants.playerTwoSetWins += 1;
+            Constants.SetEnds = true;
         }
 
         BackPressed();

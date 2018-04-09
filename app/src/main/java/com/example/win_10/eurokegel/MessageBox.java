@@ -42,31 +42,6 @@ class MessageBox {
                 .setPositiveButton(actualContext.getResources().getString(R.string.Yes), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
 
-                                if (MessageAsk == MessageAsks.PLYONEGIVEUP) {
-                                    Constants.StartNewSet(2);
-                                    ((GameActivity)actualContext).onResume();
-                                }
-                                else if (MessageAsk == MessageAsks.PLYTWOGIVEUP) {
-                                    Constants.StartNewSet(1);
-                                    ((GameActivity) actualContext).onResume();
-                                }
-                                else if (MessageAsk == MessageAsks.REDBALLSHOT) {
-                                    Constants.RedBallShot = true;
-                                    ((PointerActivity)actualContext).BackPressed();
-                                }
-                                else if (MessageAsk == MessageAsks.PLYONEWIN) {
-                                    if (Constants.PlayerTwoPoints == Constants.GamePointLimit)
-                                        Constants.PlayerTwoPoints = Constants.GamePointLimit-1;
-                                    Constants.StartNewSet(1);
-                                    ((GameActivity) actualContext).onResume();
-                                }
-                                else if (MessageAsk == MessageAsks.PLYTWOWIN) {
-                                    if (Constants.PlayerOnePoints == Constants.GamePointLimit)
-                                        Constants.PlayerOnePoints = Constants.GamePointLimit-1;
-                                    Constants.StartNewSet(2);
-                                    ((GameActivity) actualContext).onResume();
-                                }
-
                                 MessageAsk = MessageAsks.NONE;
                             }
                         })

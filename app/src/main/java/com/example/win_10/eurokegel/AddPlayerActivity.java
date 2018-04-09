@@ -30,6 +30,10 @@ public class AddPlayerActivity extends AppCompatActivity {
     String teamOnePlayerTwo = "";
     String teamTwoPlayerTwo = "";
     String teamTwoPlayerOne = "";
+    String teamOnePlayerOneFullName = "";
+    String teamOnePlayerTwoFullName = "";
+    String teamTwoPlayerTwoFullName = "";
+    String teamTwoPlayerOneFullName = "";
 
 //    private ArrayList<String> allPlayerSpinnerArray = new ArrayList<>(Arrays.asList(
 //            "", "Kurta László", "Csasztvan Zsolt", "Simcsik László", "Vári László",
@@ -41,7 +45,7 @@ public class AddPlayerActivity extends AppCompatActivity {
 
     private ArrayList<String> allPlayerSpinnerArray = new ArrayList<>(Arrays.asList(
             "", "Berke Gyula", "Gyurkó László", "Gyurkó Mihály", "Palyik Győzike", "Németh László"
-            ,"Filadelfi Misike","Kiss Janos", "Sztojka Dezső", "Dandé István", "Békési Károly", "Komáromi Ferenc",
+            ,"Filadelfi Mihály","Kiss János", "Sztojka Dezső", "Dandé István", "Békési Károly", "Komáromi Ferenc",
             "ifj. Sztojka László"
     ));
 
@@ -90,9 +94,9 @@ public class AddPlayerActivity extends AppCompatActivity {
 
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    teamOnePlayerOne = adapterView.getItemAtPosition(i).toString();
-                    if (teamOnePlayerOne.length() > 0)
-                        teamOnePlayerOne = teamOnePlayerOne.split("\\s+")[0];
+                    teamOnePlayerOneFullName = adapterView.getItemAtPosition(i).toString();
+                    if (teamOnePlayerOneFullName.length() > 0)
+                        teamOnePlayerOne = teamOnePlayerOneFullName.split("\\s+")[0];
                 }
 
                 public void onNothingSelected(AdapterView<?> adapterView) {
@@ -107,9 +111,9 @@ public class AddPlayerActivity extends AppCompatActivity {
 
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    teamOnePlayerTwo = adapterView.getItemAtPosition(i).toString();
-                    if (teamOnePlayerTwo.length() > 0)
-                        teamOnePlayerTwo = teamOnePlayerTwo.split("\\s+")[0];
+                    teamOnePlayerTwoFullName = adapterView.getItemAtPosition(i).toString();
+                    if (teamOnePlayerTwoFullName.length() > 0)
+                        teamOnePlayerTwo = teamOnePlayerTwoFullName.split("\\s+")[0];
                 }
 
                 public void onNothingSelected(AdapterView<?> adapterView) {
@@ -125,9 +129,9 @@ public class AddPlayerActivity extends AppCompatActivity {
 
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    teamTwoPlayerOne = adapterView.getItemAtPosition(i).toString();
-                    if (teamTwoPlayerOne.length() > 0)
-                        teamTwoPlayerOne = teamTwoPlayerOne.split("\\s+")[0];
+                    teamTwoPlayerOneFullName = adapterView.getItemAtPosition(i).toString();
+                    if (teamTwoPlayerOneFullName.length() > 0)
+                        teamTwoPlayerOne = teamTwoPlayerOneFullName.split("\\s+")[0];
                 }
 
                 public void onNothingSelected(AdapterView<?> adapterView) {
@@ -142,9 +146,9 @@ public class AddPlayerActivity extends AppCompatActivity {
 
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    teamTwoPlayerTwo = adapterView.getItemAtPosition(i).toString();
-                    if (teamTwoPlayerTwo.length() > 0)
-                        teamTwoPlayerTwo = teamTwoPlayerTwo.split("\\s+")[0];
+                    teamTwoPlayerTwoFullName = adapterView.getItemAtPosition(i).toString();
+                    if (teamTwoPlayerTwoFullName.length() > 0)
+                        teamTwoPlayerTwo = teamTwoPlayerTwoFullName.split("\\s+")[0];
                 }
 
                 public void onNothingSelected(AdapterView<?> adapterView) {
@@ -189,9 +193,6 @@ public class AddPlayerActivity extends AppCompatActivity {
         findViewById(R.id.beginGameButton).setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-                Constants.PlayerOne = "Filadelfi Misike";
-                Constants.PlayerTwo = "Palyik Győzike";
-
                 if (Constants.GameType == Constants.GameTypes.PAIR) {
                     if (teamOnePlayerOne.equals("")) {
                         Constants.Tts.speak("Add meg az első csapat első játékosának nevét", TextToSpeech.QUEUE_FLUSH, null);
@@ -206,6 +207,12 @@ public class AddPlayerActivity extends AppCompatActivity {
                         Constants.Tts.speak("Add meg a második csapat második játékosának nevét", TextToSpeech.QUEUE_FLUSH, null);
                         return;
                     }
+                    else if (teamOnePlayerOneFullName.equals(teamOnePlayerTwoFullName) || teamOnePlayerOneFullName.equals(teamTwoPlayerOneFullName) ||
+                            teamOnePlayerOneFullName.equals(teamTwoPlayerTwoFullName) || teamOnePlayerTwoFullName.equals(teamTwoPlayerOneFullName) ||
+                            teamOnePlayerTwoFullName.equals(teamTwoPlayerTwoFullName) || teamTwoPlayerOneFullName.equals(teamTwoPlayerTwoFullName)) {
+                        Constants.Tts.speak("Egy játékos neve csak egyszer adható meg", TextToSpeech.QUEUE_FLUSH, null);
+                        return;
+                    }
                     Constants.PlayerOne = teamOnePlayerOne + " - " + teamOnePlayerTwo;
                     Constants.PlayerTwo = teamTwoPlayerOne + " - " + teamTwoPlayerTwo;
                 }
@@ -215,6 +222,10 @@ public class AddPlayerActivity extends AppCompatActivity {
                         return;
                     } else if (Constants.PlayerTwo.equals("")) {
                         Constants.Tts.speak("Add meg a második játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
+                        return;
+                    }
+                    else if (Constants.PlayerTwo.equals(Constants.PlayerOne)) {
+                        Constants.Tts.speak("Egy játékos neve csak egyszer adható meg", TextToSpeech.QUEUE_FLUSH, null);
                         return;
                     }
                 }

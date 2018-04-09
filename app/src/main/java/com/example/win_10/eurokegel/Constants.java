@@ -41,9 +41,10 @@ class Constants {
     static GameTypes GameType;
     static Boolean RedBallShot = false;
     static int GameSetLimit = 2;
+    static boolean SetEnds = false;
+    static boolean GameEnds = false;
 
-
-        public static void SetDefaultTextSizes(TextView tv, Resources resources)
+    public static void SetDefaultTextSizes(TextView tv, Resources resources)
     {
         float sourceTextSize = tv.getTextSize();
         DefaultTextSizeNormal = sourceTextSize / resources.getDisplayMetrics().density;
@@ -54,18 +55,18 @@ class Constants {
         DefaultTextSizeHuge = DefaultTextSizeNormal * 6;
     }
 
-    public static void StartNewSet(int playerWins) {
-        if (playerWins == 1)
-            Constants.playerOneSetWins += 1;
-        else
-            Constants.playerTwoSetWins += 1;
-
+    public static void StartNewSet(Context context) {
+        Constants.SetEnds = false;
+        Constants.GameEnds = false;
         Constants.PlayerOnePoints = 0;
         Constants.PlayerTwoPoints = 0;
         Constants.PointHistory = "<font color=#D5D5E4>22</font>";
+        ((GameActivity)context).onResume();
     }
 
     public static void StartNewGame(Context context) {
+        Constants.SetEnds = false;
+        Constants.GameEnds = false;
         Constants.playerOneSetWins = 0;
         Constants.playerTwoSetWins = 0;
         Constants.PlayerOnePoints = 0;

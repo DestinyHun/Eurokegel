@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Biliárd</string>
+    <string name="app_name">DigiTable</string>
     <string name="title_activity_add_player">JÁTÉKOSOK MEGADÁSA:</string>
     <string name="title_activity_game">JÁTÉK:</string>
     <string name="title_activity_main">FŐMENÜ</string>
@@ -18,7 +18,7 @@
     <string name="NewGameSingle">Magyarbiliárd egyéni játék</string>
     <string name="NewGamePair">Magyarbiliárd páros játék</string>
     <string name="NewGameRelay">Magyarbiliárd staféta játék</string>
-    <string name="played_sets">HÁNY SZETTRE JÁTSZÁK:</string>
+    <string name="played_sets">ENNYI NYERT SZETTRE:</string>
     <string name="AddPoint">+</string>
     <string name="RemovePoint">-</string>
     <string name="GiveUp">FELADÁS</string>

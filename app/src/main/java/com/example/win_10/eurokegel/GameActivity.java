@@ -58,6 +58,7 @@ public class GameActivity extends AppCompatActivity {
     public void onResume()
     {  // After a pause OR at startup
         super.onResume();
+        ButtonsEnabled = false;
         ((TextView)findViewById(R.id.SetStandTextView)).setText(
                 String.format(Locale.ENGLISH, "%d",Constants.playerOneSetWins) + " : " + String.format(Locale.ENGLISH, "%d",Constants.playerTwoSetWins));
 
@@ -105,18 +106,34 @@ public class GameActivity extends AppCompatActivity {
 
         ((TextView)findViewById(R.id.historyTextView)).setText(Html.fromHtml(Constants.PointHistory));
 
-        if (Constants.playerOneSetWins == Constants.GameSetLimit) {
-            ButtonsEnabled = false;
-            SpeechText("A fehér " + Constants.playerOneSetWins + " " + Constants.playerTwoSetWins + " arányban megnyerte a meccset");
-            Constants.StartNewGame(context);
-        }
+        if (Constants.playerOneSetWins == Constants.GameSetLimit)
+            SetNewGame("fehér");
+        else if (Constants.playerTwoSetWins == Constants.GameSetLimit )
+            SetNewGame("sötét");
+        else if (Constants.SetEnds)
+            SetNewSet();
+    }
 
-        if (Constants.playerTwoSetWins == Constants.GameSetLimit )
-        {
-            ButtonsEnabled = false;
-            SpeechText("A sötét " + Constants.playerOneSetWins + " " + Constants.playerTwoSetWins + " arányban megnyerte a meccset");
-            Constants.StartNewGame(context);
-        }
+    void SetNewGame(String winnerPlayer)
+    {
+        SpeechText("A " + winnerPlayer + " " + Constants.playerOneSetWins + " " + Constants.playerTwoSetWins + " arányban megnyerte a meccset");
+        Constants.GameEnds = true;
+        ((Button)findViewById(R.id.addPointToPlayerOne)).setVisibility(View.INVISIBLE);
+        ((Button)findViewById(R.id.addPointToPlayerTwo)).setVisibility(View.INVISIBLE);
+        ((Button)findViewById(R.id.removePointFromPlayerOne)).setVisibility(View.INVISIBLE);
+        ((Button)findViewById(R.id.removePointFromPlayerTwo)).setVisibility(View.INVISIBLE);
+        ((Button)findViewById(R.id.giveUpPlayerOne)).setText("ÚJ PARTI");
+        ((Button)findViewById(R.id.giveUpPlayerTwo)).setText("ÚJ PARTI");
+    }
+
+    void SetNewSet()
+    {
+        ((Button)findViewById(R.id.addPointToPlayerOne)).setVisibility(View.INVISIBLE);
+        ((Button)findViewById(R.id.addPointToPlayerTwo)).setVisibility(View.INVISIBLE);
+        ((Button)findViewById(R.id.removePointFromPlayerOne)).setVisibility(View.INVISIBLE);
+        ((Button)findViewById(R.id.removePointFromPlayerTwo)).setVisibility(View.INVISIBLE);
+        ((Button)findViewById(R.id.giveUpPlayerOne)).setText("ÚJ SZETT");
+        ((Button)findViewById(R.id.giveUpPlayerTwo)).setText("ÚJ SZETT");
     }
 
     class RemindTask extends TimerTask {
@@ -125,6 +142,7 @@ public class GameActivity extends AppCompatActivity {
 
             Constants.PointToAdd = 0;
             Constants.PointToAddPlayer = 0;
+            ButtonsEnabled = true;
             timer.cancel(); //A timer szál megszüntetése
         }
     }
@@ -177,14 +195,30 @@ public class GameActivity extends AppCompatActivity {
 
     public void GiveUpPlayerOne_OnClick(View view)
     {
+        if (Constants.GameEnds) {
+            Constants.StartNewGame(context);
+            return;
+        }
+
+        if (Constants.SetEnds) {
+            Constants.StartNewSet(context);
+            ((Button)findViewById(R.id.addPointToPlayerOne)).setVisibility(View.VISIBLE);
+            ((Button)findViewById(R.id.addPointToPlayerTwo)).setVisibility(View.VISIBLE);
+            ((Button)findViewById(R.id.removePointFromPlayerOne)).setVisibility(View.VISIBLE);
+            ((Button)findViewById(R.id.removePointFromPlayerTwo)).setVisibility(View.VISIBLE);
+            ((Button)findViewById(R.id.giveUpPlayerOne)).setText("FELADÁS");
+            ((Button)findViewById(R.id.giveUpPlayerTwo)).setText("FELADÁS");
+            return;
+        }
+
         if (!ButtonsEnabled)
             return;
 
         MessageBoxActivity.YesButtonText = "FELADÁS";
         MessageBoxActivity.NoButtonText = "MÉGSE";
         MessageBoxActivity.MessageType = MessageBoxActivity.MessageTypes.PLYONEGIVEUP;
-        MessageBoxActivity.MessageText =  "Amennyiben a 'FELADÁS' lehetőséget választja " + Constants.PlayerOne + " feladja a játékot!";
-        MessageBoxActivity.TextToSpeechString = "Amennyiben a 'FELADÁS' lehetőséget választja " + Constants.PlayerOne + " feladja a játékot";
+        MessageBoxActivity.MessageText =  "Amennyiben a 'FELADÁS' lehetőséget választja " + Constants.PlayerOne + " feladja a szettet!";
+        MessageBoxActivity.TextToSpeechString = "Amennyiben a feladás lehetőséget választja " + Constants.PlayerOne + " feladja a szettet";
         MessageBoxActivity.WaitForSpeech = false;
         Intent intent = new Intent(GameActivity.this, MessageBoxActivity.class);
         startActivity(intent);
@@ -192,14 +226,30 @@ public class GameActivity extends AppCompatActivity {
 
     public void GiveUpPlayerTwo_OnClick(View view)
     {
+        if (Constants.GameEnds) {
+            Constants.StartNewGame(context);
+            return;
+        }
+
+        if (Constants.SetEnds) {
+            Constants.StartNewSet(context);
+            ((Button)findViewById(R.id.addPointToPlayerOne)).setVisibility(View.VISIBLE);
+            ((Button)findViewById(R.id.addPointToPlayerTwo)).setVisibility(View.VISIBLE);
+            ((Button)findViewById(R.id.removePointFromPlayerOne)).setVisibility(View.VISIBLE);
+            ((Button)findViewById(R.id.removePointFromPlayerTwo)).setVisibility(View.VISIBLE);
+            ((Button)findViewById(R.id.giveUpPlayerOne)).setText("FELADÁS");
+            ((Button)findViewById(R.id.giveUpPlayerTwo)).setText("FELADÁS");
+            return;
+        }
+
         if (!ButtonsEnabled)
             return;
 
         MessageBoxActivity.YesButtonText = "FELADÁS";
         MessageBoxActivity.NoButtonText = "MÉGSE";
         MessageBoxActivity.MessageType = MessageBoxActivity.MessageTypes.PLYTWOGIVEUP;
-        MessageBoxActivity.MessageText =  "Amennyiben a 'FELADÁS' lehetőséget választja " + Constants.PlayerTwo + " feladja a játékot!";
-        MessageBoxActivity.TextToSpeechString = "Amennyiben a 'FELADÁS' lehetőséget választja " + Constants.PlayerTwo + " feladja a játékot";
+        MessageBoxActivity.MessageText =  "Amennyiben a 'FELADÁS' lehetőséget választja " + Constants.PlayerTwo + " feladja a szettet!";
+        MessageBoxActivity.TextToSpeechString = "Amennyiben a feladás lehetőséget választja " + Constants.PlayerTwo + " feladja a szettet";
         MessageBoxActivity.WaitForSpeech = false;
         Intent intent = new Intent(GameActivity.this, MessageBoxActivity.class);
         startActivity(intent);
@@ -260,7 +310,7 @@ public class GameActivity extends AppCompatActivity {
                         MessageBoxActivity.NoButtonText = "EREDMÉNY JAVÍTÁSA";
                         MessageBoxActivity.MessageType = MessageBoxActivity.MessageTypes.PLYONEWIN;
                         MessageBoxActivity.MessageText =  "Amennyiben az eredmény helyes, nyomja meg a 'SZETT VÉGE' gombot!";
-                        MessageBoxActivity.TextToSpeechString = "Amennyiben az eredmény helyes, nyomja meg a 'SZETT VÉGE' gombot";
+                        MessageBoxActivity.TextToSpeechString = "Amennyiben az eredmény helyes, nyomja meg a szett vége gombot";
                         MessageBoxActivity.WaitForSpeech = true;
                         Intent intent = new Intent(GameActivity.this, MessageBoxActivity.class);
                         startActivity(intent);
@@ -321,7 +371,7 @@ public class GameActivity extends AppCompatActivity {
                         MessageBoxActivity.NoButtonText = "EREDMÉNY JAVÍTÁSA";
                         MessageBoxActivity.MessageType = MessageBoxActivity.MessageTypes.PLYTWOWIN;
                         MessageBoxActivity.MessageText =  "Amennyiben az eredmény helyes, nyomja meg a 'SZETT VÉGE' gombot!";
-                        MessageBoxActivity.TextToSpeechString = "Amennyiben az eredmény helyes, nyomja meg a 'SZETT VÉGE' gombot";
+                        MessageBoxActivity.TextToSpeechString = "Amennyiben az eredmény helyes, nyomja meg a szett vége gombot";
                         MessageBoxActivity.WaitForSpeech = true;
                         Intent intent = new Intent(GameActivity.this, MessageBoxActivity.class);
                         startActivity(intent);
@@ -354,6 +404,12 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (ButtonsEnabled)
+            super.onBackPressed();
     }
 
     public void BackPressed()
