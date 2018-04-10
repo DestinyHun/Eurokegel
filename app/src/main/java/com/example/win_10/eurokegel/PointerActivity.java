@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -38,6 +39,7 @@ public class PointerActivity extends AppCompatActivity {
             setContentView(R.layout.activity_pointer_eurokegel);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         if (Constants.GamePointLimit == 120)
             for (int i = 1; i <= 22; i++)
