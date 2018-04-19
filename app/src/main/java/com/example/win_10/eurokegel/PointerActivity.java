@@ -66,7 +66,7 @@ public class PointerActivity extends AppCompatActivity {
         if (Constants.PointToAddPlayer == 1)
             ((TextView) findViewById(id)).setBackgroundResource(R.drawable.black_border_white);
         else
-            ((TextView) findViewById(id)).setBackgroundResource(R.drawable.black_border_red);
+            ((TextView) findViewById(id)).setBackgroundResource(R.drawable.black_border_yellow);
     }
 
     public void PointTextViews_OnClick(View view) {
