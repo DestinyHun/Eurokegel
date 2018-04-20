@@ -100,16 +100,16 @@ public class GameActivity extends AppCompatActivity {
                         (Constants.AddPoint ? "" : "-") +
                         (String.format(Locale.ENGLISH, "%d",Constants.PointToAdd)) + "</font> <br/>" + Constants.PointHistory;
 
-                if (Constants.PlayerOnePoints + Constants.PointToAdd == Constants.PlayerTwoPoints) {
+                if (plyPointToSet == Constants.PlayerTwoPoints) {
                     ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", 0));
                     ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_darkgrey);
                 }
-                else if (Constants.PlayerOnePoints + Constants.PointToAdd > Constants.PlayerTwoPoints) {
-                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", Constants.PlayerOnePoints + Constants.PointToAdd-Constants.PlayerTwoPoints));
+                else if (plyPointToSet > Constants.PlayerTwoPoints) {
+                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", plyPointToSet-Constants.PlayerTwoPoints));
                     ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_white);
                 }
                 else{
-                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", Constants.PlayerTwoPoints - (Constants.PlayerOnePoints + Constants.PointToAdd)));
+                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", Constants.PlayerTwoPoints - plyPointToSet));
                     ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_yellow);
                 }
 
@@ -128,16 +128,16 @@ public class GameActivity extends AppCompatActivity {
                         (Constants.AddPoint ? "" : "-") +
                         (String.format(Locale.ENGLISH, "%d",Constants.PointToAdd)) + "</font> <br/>" + Constants.PointHistory;
 
-                if (Constants.PlayerOnePoints == Constants.PlayerTwoPoints + Constants.PointToAdd) {
+                if (Constants.PlayerOnePoints == plyPointToSet) {
                     ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", 0));
                     ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_darkgrey);
                 }
-                else if (Constants.PlayerOnePoints > Constants.PlayerTwoPoints + Constants.PointToAdd) {
-                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", Constants.PlayerOnePoints - (Constants.PlayerTwoPoints + Constants.PointToAdd)));
+                else if (Constants.PlayerOnePoints > plyPointToSet) {
+                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", Constants.PlayerOnePoints - plyPointToSet));
                     ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_white);
                 }
                 else{
-                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", Constants.PlayerTwoPoints  + Constants.PointToAdd - Constants.PlayerOnePoints ));
+                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", plyPointToSet - Constants.PlayerOnePoints ));
                     ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_yellow);
                 }
             }
