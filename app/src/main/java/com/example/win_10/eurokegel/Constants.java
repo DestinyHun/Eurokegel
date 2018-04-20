@@ -32,6 +32,7 @@ class Constants {
     static float DefaultTextSizeLarge = -1;
     static float DefaultTextSizeGreat = -1;
     static float DefaultTextSizeHuge = -1;
+    static float DefaultTextSizeVeryHuge = -1;
     static int GamePointLimit = 120;
     static TextToSpeech Tts;              // TTS engine
     static boolean SpeechReady = false;
@@ -53,6 +54,7 @@ class Constants {
         DefaultTextSizeLarge = DefaultTextSizeNormal * 1.8f;
         DefaultTextSizeGreat = DefaultTextSizeNormal * 3f;
         DefaultTextSizeHuge = DefaultTextSizeNormal * 6;
+        DefaultTextSizeVeryHuge = DefaultTextSizeNormal * 8;
     }
 
     public static void StartNewSet(Context context) {
