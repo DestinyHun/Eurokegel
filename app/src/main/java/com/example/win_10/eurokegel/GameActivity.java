@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.res.Resources;
+import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.ActionBar;
@@ -13,10 +14,14 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.method.ScrollingMovementMethod;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.GridLayout;
+import android.widget.RelativeLayout;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,10 +50,9 @@ public class GameActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
         ((TextView)findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
         ((TextView)findViewById(R.id.SetStandTextView)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
-        ((TextView)findViewById(R.id.playerOnePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
-        ((TextView)findViewById(R.id.playerTwoPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
-        ((TextView)findViewById(R.id.playerOnePointHidden)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
-        ((TextView)findViewById(R.id.playerTwoPointHidden)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
+        ((TextView)findViewById(R.id.differenceTextView)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
+        ((TextView)findViewById(R.id.playerOnePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeVeryHuge);
+        ((TextView)findViewById(R.id.playerTwoPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeVeryHuge);
         ((TextView)findViewById(R.id.historyTextView)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
         ((TextView)findViewById(R.id.historyTextView)).setMovementMethod(ScrollingMovementMethod.getInstance());
         ((Button)findViewById(R.id.addPointToPlayerOne)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
@@ -57,7 +61,9 @@ public class GameActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.removePointFromPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
         ((Button)findViewById(R.id.giveUpPlayerOne)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
         ((Button)findViewById(R.id.giveUpPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+
     }
+
 
     public void onResume()
     {  // After a pause OR at startup
@@ -82,6 +88,20 @@ public class GameActivity extends AppCompatActivity {
                 Constants.PointHistory = "<font color=#ffffff>" +
                         (Constants.AddPoint ? "" : "-") +
                         (String.format(Locale.ENGLISH, "%d",Constants.PointToAdd)) + "</font> <br/>" + Constants.PointHistory;
+
+                if (Constants.PlayerOnePoints + Constants.PointToAdd == Constants.PlayerTwoPoints) {
+                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", 0));
+                    ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_darkgrey);
+                }
+                else if (Constants.PlayerOnePoints + Constants.PointToAdd > Constants.PlayerTwoPoints) {
+                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", Constants.PlayerOnePoints + Constants.PointToAdd-Constants.PlayerTwoPoints));
+                    ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_white);
+                }
+                else{
+                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", Constants.PlayerTwoPoints - (Constants.PlayerOnePoints + Constants.PointToAdd)));
+                    ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_yellow);
+                }
+
             }
             else {
                 plyPointToSet = Constants.PlayerTwoPoints + Constants.PointToAdd * (Constants.AddPoint ? 1 : -1);
@@ -96,6 +116,19 @@ public class GameActivity extends AppCompatActivity {
                 Constants.PointHistory = "<font color=#ff0000>" +
                         (Constants.AddPoint ? "" : "-") +
                         (String.format(Locale.ENGLISH, "%d",Constants.PointToAdd)) + "</font> <br/>" + Constants.PointHistory;
+
+                if (Constants.PlayerOnePoints == Constants.PlayerTwoPoints + Constants.PointToAdd) {
+                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", 0));
+                    ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_darkgrey);
+                }
+                else if (Constants.PlayerOnePoints > Constants.PlayerTwoPoints + Constants.PointToAdd) {
+                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", Constants.PlayerOnePoints - (Constants.PlayerTwoPoints + Constants.PointToAdd)));
+                    ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_white);
+                }
+                else{
+                    ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", Constants.PlayerTwoPoints  + Constants.PointToAdd - Constants.PlayerOnePoints ));
+                    ((TextView) findViewById(R.id.differenceTextView)).setBackgroundResource(R.drawable.black_border_yellow);
+                }
             }
 
             timer = new Timer();
@@ -200,11 +233,13 @@ public class GameActivity extends AppCompatActivity {
     public void GiveUpPlayerOne_OnClick(View view)
     {
         if (Constants.GameEnds) {
+            ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", 0));
             Constants.StartNewGame(context);
             return;
         }
 
         if (Constants.SetEnds) {
+            ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", 0));
             Constants.StartNewSet(context);
             ((Button)findViewById(R.id.addPointToPlayerOne)).setVisibility(View.VISIBLE);
             ((Button)findViewById(R.id.addPointToPlayerTwo)).setVisibility(View.VISIBLE);
@@ -231,11 +266,13 @@ public class GameActivity extends AppCompatActivity {
     public void GiveUpPlayerTwo_OnClick(View view)
     {
         if (Constants.GameEnds) {
+            ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", 0));
             Constants.StartNewGame(context);
             return;
         }
 
         if (Constants.SetEnds) {
+            ((TextView) findViewById(R.id.differenceTextView)).setText(String.format(Locale.ENGLISH, "%d", 0));
             Constants.StartNewSet(context);
             ((Button)findViewById(R.id.addPointToPlayerOne)).setVisibility(View.VISIBLE);
             ((Button)findViewById(R.id.addPointToPlayerTwo)).setVisibility(View.VISIBLE);
@@ -399,7 +436,7 @@ public class GameActivity extends AppCompatActivity {
                 });
             }
             else if (Constants.PlayerTwoPoints > Constants.GamePointLimit - 20)
-                SpeechText("Még " + String.format(Locale.ENGLISH, "%d", (Constants.GamePointLimit - Constants.PlayerTwoPoints)) + " pont kell a sárganek.");
+                SpeechText("Még " + String.format(Locale.ENGLISH, "%d", (Constants.GamePointLimit - Constants.PlayerTwoPoints)) + " pont kell a sárgának.");
         }
 
         if (Constants.GameType == Constants.GameTypes.RELAY) {
