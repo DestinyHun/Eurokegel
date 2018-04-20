@@ -13,6 +13,8 @@
         android:orientation="horizontal">
 
         <android.support.v7.widget.GridLayout
+            android:layout_marginTop="10px"
+            android:layout_marginStart="10px"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_alignParentStart="true"
@@ -24,9 +26,8 @@
 
             <Button
                 android:id="@+id/addPointToPlayerOne"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10px"
+                android:layout_marginBottom="10px"
                 android:background="@drawable/black_border_green"
                 android:onClick="AddPointToPlayerOne_OnClick"
                 android:text="@string/AddPoint"
@@ -38,9 +39,8 @@
 
             <Button
                 android:id="@+id/removePointFromPlayerOne"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10px"
+                android:layout_marginEnd="10px"
                 android:background="@drawable/black_border_red"
                 android:onClick="RemovePointFromPlayerOne_OnClick"
                 android:text="@string/RemovePoint"
@@ -52,8 +52,8 @@
 
             <TextView
                 android:id="@+id/playerOneName"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10px"
+                android:layout_marginEnd="10px"
                 android:background="@drawable/black_border_white"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
@@ -69,8 +69,8 @@
 
             <TextView
                 android:id="@+id/playerTwoName"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="5dp"
+                android:layout_marginBottom="10px"
+                android:layout_marginEnd="10px"
                 android:background="@drawable/black_border_yellow"
                 android:ellipsize="end"
                 android:gravity="center_vertical"
@@ -87,6 +87,8 @@
 
             <TextView
                 android:id="@+id/playerOnePoint"
+                android:layout_marginBottom="10px"
+                android:layout_marginEnd="10px"
                 android:gravity="center_vertical"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
@@ -100,7 +102,8 @@
 
             <TextView
                 android:id="@+id/SetStandTextView"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="10px"
+                android:layout_marginEnd="10px"
                 android:background="@drawable/black_border_darkgrey"
                 android:gravity="center_vertical"
                 android:textAlignment="center"
@@ -113,7 +116,9 @@
 
             <TextView
                 android:id="@+id/playerTwoPoint"
-                android:gravity="center_vertical"
+                android:layout_marginBottom="10px"
+                android:layout_marginEnd="10px"
+                android:gravity="fill"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
@@ -126,12 +131,10 @@
 
             <Button
                 android:id="@+id/addPointToPlayerTwo"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/black_border_green"
                 android:onClick="AddPointToPlayerTwo_OnClick"
+                android:layout_marginBottom="10px"
+                android:layout_marginEnd="10px"
                 android:text="@string/AddPoint"
                 app:layout_column="4"
                 app:layout_columnWeight="0.17"
@@ -141,9 +144,8 @@
 
             <Button
                 android:id="@+id/removePointFromPlayerTwo"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10px"
+                android:layout_marginEnd="10px"
                 android:background="@drawable/black_border_red"
                 android:onClick="RemovePointFromPlayerTwo_OnClick"
                 android:text="@string/RemovePoint"
@@ -155,9 +157,8 @@
 
             <Button
                 android:id="@+id/giveUpPlayerOne"
-                android:layout_marginBottom="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10px"
+                android:layout_marginEnd="10px"
                 android:background="@drawable/black_border_green"
                 android:onClick="GiveUpPlayerOne_OnClick"
                 android:text="@string/GiveUp"
@@ -170,11 +171,13 @@
             <TextView
                 android:id="@+id/differenceTextView"
                 android:textAlignment="center"
+                android:layout_marginEnd="10px"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="10px"
                 android:textColor="@android:color/black"
                 android:background="@drawable/black_border_darkgrey"
                 android:textStyle="bold"
+                android:maxLines="1"
                 app:layout_column="2"
                 app:layout_columnSpan="1"
                 app:layout_rowSpan="2"
@@ -184,9 +187,10 @@
 
             <TextView
                 android:id="@+id/historyTextView"
-                android:layout_marginBottom="10dp"
                 android:background="@drawable/black_border_darkgrey"
                 android:maxLines="4"
+                android:layout_marginEnd="10px"
+                android:layout_marginBottom="10px"
                 android:scrollbars="vertical"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
@@ -199,9 +203,8 @@
 
             <Button
                 android:id="@+id/giveUpPlayerTwo"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10px"
+                android:layout_marginEnd="10px"
                 android:background="@drawable/black_border_green"
                 android:onClick="GiveUpPlayerTwo_OnClick"
                 android:text="@string/GiveUp"
