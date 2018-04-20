@@ -21,7 +21,7 @@
     <string name="played_sets">ENNYI NYERT SZETTRE:</string>
     <string name="AddPoint">+</string>
     <string name="RemovePoint">-</string>
-    <string name="GiveUp">FELADÁS</string>
+    <string name="GiveUp">FELAD</string>
     <string name="NewSet">ÚJ SZETT</string>
     <string name="EmptyString"> </string>
     <string name="dash_sign">-</string>
