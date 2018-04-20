@@ -41,7 +41,7 @@ public class AddPlayerActivity extends AppCompatActivity {
             "Bíró Imre", "Hőgyes Benjámin", "Tomka Lajos", "Aradszki Mihály",
             "Tímár András", "Kocsor Sándor", "Szűcs Sándor", "Zsákai Tibor",
             "Kiss Attila", "Gyurkó László", "Turi Zoltán", "Kincses László",
-            "Ifj. Sáfián György", "Carcangiu Roberto", "Bencsik Tibor", "Salát Mátyás"
+            "Sáfián György", "Carcangiu Roberto", "Bencsik Tibor", "Salát Mátyás"
     ));
 
 //    private ArrayList<String> allPlayerSpinnerArray = new ArrayList<>(Arrays.asList(
