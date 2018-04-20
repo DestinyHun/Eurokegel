@@ -2,8 +2,11 @@ package com.example.win_10.eurokegel;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.speech.tts.TextToSpeech;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -44,6 +47,8 @@ class Constants {
     static int GameSetLimit = 2;
     static boolean SetEnds = false;
     static boolean GameEnds = false;
+    static int ScreenWidth = 0;
+    static int ScreenHeight = 0;
 
     public static void SetDefaultTextSizes(TextView tv, Resources resources)
     {
@@ -53,7 +58,7 @@ class Constants {
         DefaultTextSizeLightLarge = DefaultTextSizeNormal * 1.3f;
         DefaultTextSizeLarge = DefaultTextSizeNormal * 1.8f;
         DefaultTextSizeGreat = DefaultTextSizeNormal * 3f;
-        DefaultTextSizeHuge = DefaultTextSizeNormal * 6;
+        DefaultTextSizeHuge = DefaultTextSizeNormal * 4;
         DefaultTextSizeVeryHuge = DefaultTextSizeNormal * 8;
     }
 
