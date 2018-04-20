@@ -2,12 +2,14 @@ package com.example.win_10.eurokegel;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.graphics.Point;
 import android.media.MediaPlayer;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.TypedValue;
+import android.view.Display;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -36,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
 
         Constants.InitSounds(MainActivity.this);
 
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        Constants.ScreenWidth = size.x;
+        Constants.ScreenHeight = size.y;
     }
 
     public void MagyarbiliardTextView_OnClick(View view)
