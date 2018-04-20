@@ -45,8 +45,8 @@ public class GameActivity extends AppCompatActivity {
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         //Set player names
-        ((TextView)findViewById(R.id.playerOneName)).setText(Constants.PlayerOne.toUpperCase());
-        ((TextView)findViewById(R.id.playerTwoName)).setText(Constants.PlayerTwo.toUpperCase());
+        ((TextView)findViewById(R.id.playerOneName)).setText(ConvertLastName(Constants.PlayerOne));
+        ((TextView)findViewById(R.id.playerTwoName)).setText(ConvertLastName(Constants.PlayerTwo));
         ((TextView)findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
         ((TextView)findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
         ((TextView)findViewById(R.id.SetStandTextView)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
@@ -62,6 +62,17 @@ public class GameActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.giveUpPlayerOne)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
         ((Button)findViewById(R.id.giveUpPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
 
+    }
+
+    public String ConvertLastName(String name)
+    {
+        String convertedName = name.toUpperCase().split(" ")[0] + " " + name.toUpperCase().split(" ")[1].charAt(0);
+        if ("aáeéiíoóüűöőúuAÁEÉIÍOÓUÚÜŰÖŐ".indexOf(name.toUpperCase().split(" ")[1].charAt(0)) < 0
+             && "aáeéiíoóüűöőúuAÁEÉIÍOÓUÚÜŰÖŐ".indexOf(name.toUpperCase().split(" ")[1].charAt(1)) < 0) {
+            convertedName += name.toUpperCase().split(" ")[1].charAt(1);
+        }
+        convertedName += ".";
+        return convertedName;
     }
 
 
@@ -113,7 +124,7 @@ public class GameActivity extends AppCompatActivity {
                         plyPointToSet -= 1;
                 }
                 ((TextView)findViewById(R.id.playerTwoPoint)).setText(String.format(Locale.ENGLISH, "%d",plyPointToSet));
-                Constants.PointHistory = "<font color=#ff0000>" +
+                Constants.PointHistory = "<font color=#ffa500>" +
                         (Constants.AddPoint ? "" : "-") +
                         (String.format(Locale.ENGLISH, "%d",Constants.PointToAdd)) + "</font> <br/>" + Constants.PointHistory;
 
