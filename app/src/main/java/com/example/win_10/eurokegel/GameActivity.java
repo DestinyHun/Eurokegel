@@ -50,7 +50,7 @@ public class GameActivity extends AppCompatActivity {
         ((TextView)findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
         ((TextView)findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
         ((TextView)findViewById(R.id.SetStandTextView)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
-        ((TextView)findViewById(R.id.differenceTextView)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
+        ((TextView)findViewById(R.id.differenceTextView)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeHuge);
         ((TextView)findViewById(R.id.playerOnePoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeVeryHuge);
         ((TextView)findViewById(R.id.playerTwoPoint)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeVeryHuge);
         ((TextView)findViewById(R.id.historyTextView)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLarge);
@@ -61,6 +61,43 @@ public class GameActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.removePointFromPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeGreat);
         ((Button)findViewById(R.id.giveUpPlayerOne)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
         ((Button)findViewById(R.id.giveUpPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
+
+        //Set Controls size
+        float nameWidth = 0.40f;
+        float buttonWidth = 0.2f;
+
+        float nameHeight = 0.2f;
+        float buttonHeight = 0.2f;
+        float pointHeight = 0.4f;
+        float bigButtonHeight = 0.4f;
+
+        this.SetControlSize(R.id.playerOneName,nameWidth,nameHeight);
+        this.SetControlSize(R.id.playerTwoName,nameWidth,nameHeight);
+        this.SetControlSize(R.id.SetStandTextView,buttonWidth,nameHeight);
+
+        this.SetControlSize(R.id.playerOnePoint,nameWidth,pointHeight);
+        this.SetControlSize(R.id.playerTwoPoint,nameWidth,pointHeight);
+
+        this.SetControlSize(R.id.addPointToPlayerOne,buttonWidth,bigButtonHeight);
+        this.SetControlSize(R.id.addPointToPlayerTwo,buttonWidth,bigButtonHeight);
+
+        this.SetControlSize(R.id.removePointFromPlayerOne,buttonWidth,buttonHeight);
+        this.SetControlSize(R.id.removePointFromPlayerTwo,buttonWidth,buttonHeight);
+        this.SetControlSize(R.id.giveUpPlayerOne,buttonWidth,buttonHeight);
+        this.SetControlSize(R.id.giveUpPlayerTwo,buttonWidth,buttonHeight);
+
+        this.SetControlSize(R.id.differenceTextView,buttonWidth,pointHeight);
+        this.SetControlSize(R.id.historyTextView,buttonWidth,bigButtonHeight);
+    }
+
+    public void SetControlSize(int id, float widthPercent, float heightPercent)
+    {
+
+            ((TextView) findViewById(id)).setWidth(Math.round(Constants.ScreenWidth * widthPercent) -22);
+            ((TextView) findViewById(id)).setMaxWidth(Math.round(Constants.ScreenWidth * widthPercent) -22);
+
+            ((TextView) findViewById(id)).setHeight(Math.round(Constants.ScreenHeight * heightPercent) -22);
+            ((TextView) findViewById(id)).setMaxHeight(Math.round(Constants.ScreenHeight * heightPercent) -22);
 
     }
 
