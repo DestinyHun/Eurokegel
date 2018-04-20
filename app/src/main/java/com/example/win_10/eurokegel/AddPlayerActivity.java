@@ -231,6 +231,10 @@ public class AddPlayerActivity extends AppCompatActivity {
                     Constants.PlayerTwo = teamTwoPlayerOne + " - " + teamTwoPlayerTwo;
                 }
                 else {
+
+//                    Constants.PlayerOne = "Aradszki Mihály";
+//                    Constants.PlayerTwo = "Bíró Imre";
+
                     if (Constants.PlayerOne.equals("")) {
                         Constants.Tts.speak("Add meg az első játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
                         return;
