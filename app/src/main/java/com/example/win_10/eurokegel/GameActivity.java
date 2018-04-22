@@ -17,6 +17,7 @@ import android.util.TypedValue;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AbsoluteLayout;
 import android.widget.Button;
@@ -41,6 +42,9 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_game);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -73,13 +77,13 @@ public class GameActivity extends AppCompatActivity {
         this.SetControlSize(R.id.differenceTextView,41,23,18,36);
         this.SetControlSize(R.id.playerTwoPoint,61,23,37,36);
 
-        this.SetControlSize(R.id.addPointToPlayerOne,2,62,17,32);
+        this.SetControlSize(R.id.addPointToPlayerOne,2,62,17,36);
         this.SetControlSize(R.id.removePointFromPlayerOne,22,62,17,17);
-        this.SetControlSize(R.id.giveUpPlayerOne,22,81,17,13);
-        this.SetControlSize(R.id.historyTextView,41,62,18,32);
+        this.SetControlSize(R.id.giveUpPlayerOne,22,81,17,17);
+        this.SetControlSize(R.id.historyTextView,41,62,18,36);
         this.SetControlSize(R.id.removePointFromPlayerTwo,61,62,17,17);
-        this.SetControlSize(R.id.giveUpPlayerTwo,61,81,17,13);
-        this.SetControlSize(R.id.addPointToPlayerTwo,81,62,17,32);
+        this.SetControlSize(R.id.giveUpPlayerTwo,61,81,17,17);
+        this.SetControlSize(R.id.addPointToPlayerTwo,81,62,17,36);
     }
 
     public void SetControlSize(int id, float width, float height, float row, float column) {
