@@ -18,6 +18,7 @@ import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.RelativeLayout;
@@ -63,42 +64,34 @@ public class GameActivity extends AppCompatActivity {
         ((Button)findViewById(R.id.giveUpPlayerTwo)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeNormal);
 
         //Set Controls size
-        float nameWidth = 0.40f;
-        float buttonWidth = 0.2f;
 
-        float nameHeight = 0.2f;
-        float buttonHeight = 0.2f;
-        float pointHeight = 0.4f;
-        float bigButtonHeight = 0.4f;
+        this.SetControlSize(R.id.playerOneName,2,2,37,18);
+        this.SetControlSize(R.id.SetStandTextView,41,2,18,18);
+        this.SetControlSize(R.id.playerTwoName,61,2,37,18);
 
-        this.SetControlSize(R.id.playerOneName,nameWidth,nameHeight);
-        this.SetControlSize(R.id.playerTwoName,nameWidth,nameHeight);
-        this.SetControlSize(R.id.SetStandTextView,buttonWidth,nameHeight);
+        this.SetControlSize(R.id.playerOnePoint,2,23,37,36);
+        this.SetControlSize(R.id.differenceTextView,41,23,18,36);
+        this.SetControlSize(R.id.playerTwoPoint,61,23,37,36);
 
-        this.SetControlSize(R.id.playerOnePoint,nameWidth,pointHeight);
-        this.SetControlSize(R.id.playerTwoPoint,nameWidth,pointHeight);
-
-        this.SetControlSize(R.id.addPointToPlayerOne,buttonWidth,bigButtonHeight);
-        this.SetControlSize(R.id.addPointToPlayerTwo,buttonWidth,bigButtonHeight);
-
-        this.SetControlSize(R.id.removePointFromPlayerOne,buttonWidth,buttonHeight);
-        this.SetControlSize(R.id.removePointFromPlayerTwo,buttonWidth,buttonHeight);
-        this.SetControlSize(R.id.giveUpPlayerOne,buttonWidth,buttonHeight);
-        this.SetControlSize(R.id.giveUpPlayerTwo,buttonWidth,buttonHeight);
-
-        this.SetControlSize(R.id.differenceTextView,buttonWidth,pointHeight);
-        this.SetControlSize(R.id.historyTextView,buttonWidth,bigButtonHeight);
+        this.SetControlSize(R.id.addPointToPlayerOne,2,62,17,32);
+        this.SetControlSize(R.id.removePointFromPlayerOne,22,62,17,17);
+        this.SetControlSize(R.id.giveUpPlayerOne,22,81,17,13);
+        this.SetControlSize(R.id.historyTextView,41,62,18,32);
+        this.SetControlSize(R.id.removePointFromPlayerTwo,61,62,17,17);
+        this.SetControlSize(R.id.giveUpPlayerTwo,61,81,17,13);
+        this.SetControlSize(R.id.addPointToPlayerTwo,81,62,17,32);
     }
 
-    public void SetControlSize(int id, float widthPercent, float heightPercent)
-    {
+    public void SetControlSize(int id, float width, float height, float row, float column) {
 
-            ((TextView) findViewById(id)).setWidth(Math.round(Constants.ScreenWidth * widthPercent) -22);
-            ((TextView) findViewById(id)).setMaxWidth(Math.round(Constants.ScreenWidth * widthPercent) -22);
+        TextView workingTV = ((TextView) findViewById(id));
 
-            ((TextView) findViewById(id)).setHeight(Math.round(Constants.ScreenHeight * heightPercent) -22);
-            ((TextView) findViewById(id)).setMaxHeight(Math.round(Constants.ScreenHeight * heightPercent) -22);
-
+        AbsoluteLayout.LayoutParams params = ((AbsoluteLayout.LayoutParams) workingTV.getLayoutParams());
+        params.width = Math.round(Constants.ScreenWidth * (row/100));
+        params.height = Math.round(Constants.ScreenHeight * (column/100));
+        params.x = Math.round(Constants.ScreenWidth*(width/100)) ;
+        params.y = Math.round(Constants.ScreenHeight*(height/100));
+        workingTV.setLayoutParams(params);
     }
 
     public String ConvertLastName(String name)
