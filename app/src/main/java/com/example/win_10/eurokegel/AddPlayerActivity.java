@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -57,6 +58,9 @@ public class AddPlayerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         if (Constants.GameType == Constants.GameTypes.PAIR)
             setContentView(R.layout.activity_add_player_pair);
         else
@@ -232,8 +236,8 @@ public class AddPlayerActivity extends AppCompatActivity {
                 }
                 else {
 
-//                    Constants.PlayerOne = "Aradszki Mihály";
-//                    Constants.PlayerTwo = "Bíró Imre";
+                    Constants.PlayerOne = "Aradszki Mihály";
+                    Constants.PlayerTwo = "Bíró Imre";
 
                     if (Constants.PlayerOne.equals("")) {
                         Constants.Tts.speak("Add meg az első játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
