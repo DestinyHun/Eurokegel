@@ -118,11 +118,11 @@ class Constants {
     ));
 
     public static ArrayList<String> AllPlayerSpinnerArrayTeams = new ArrayList<>(Arrays.asList(
-            "", "Sarkadi Pálma BK","Kiséri BK","Békési Jóbarát BK","Gyomaendrődi Korona BK 4.","Magamért Telekgerendási BK","Jóbarát Pitvarosi BK",
+            "", "Sarkadi Pálma BK","Kiséri BK 1.","Békési Jóbarát BK","Gyomaendrődi Korona BK 4.","Magamért Telekgerendási BK","Jóbarát Pitvarosi BK",
             "Szeghalmi Safi BK 1.","Csabai BK 1.","Berényi BK","","Gyomaendrődi Korona BK 1.","Hódmezőmvásárhelyi Kinizsi BK","Berényi Szikora BK",
             "Belvárosi Cápák BK","Okányi Pelikán BK 1.","Gyomaendrődi Korona BK 2.","KLUB 120 BK","Dobozi Simák BK","Magamért VB BK 1.","Szeghalmi Safi BK 2.",
             "Sarkadi Andi BK ","Fehér Cápák BK","Tótkomlósi Bikák BK ","Csökmői BK","Nyerő Tigrisek BK","Békési Jóbarát Wolf Team BK","Gyomaendrődi Korona BK 3.",
-            "Csabai BK Senior","Taroló Trió BK","Magamért Zerind BK","Sörpatika BK","Kiséri BK","Pöröly Cápák BK","Magamért VB BK 2.","Tótkomlósi BK","Okányi Pelikán BK 2."
+            "Csabai BK Senior","Taroló Trió BK","Magamért Zerind BK","Sörpatika BK","Kiséri BK 2.","Pöröly Cápák BK","Magamért VB BK 2.","Tótkomlósi BK","Okányi Pelikán BK 2."
 
 
     ));
