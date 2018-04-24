@@ -100,13 +100,14 @@ public class GameActivity extends AppCompatActivity {
 
     public String ConvertLastName(String name)
     {
-        String convertedName = name.toUpperCase().split(" ")[0] + " " + name.toUpperCase().split(" ")[1].charAt(0);
-        if ("aáeéiíoóüűöőúuAÁEÉIÍOÓUÚÜŰÖŐ".indexOf(name.toUpperCase().split(" ")[1].charAt(0)) < 0
-             && "aáeéiíoóüűöőúuAÁEÉIÍOÓUÚÜŰÖŐ".indexOf(name.toUpperCase().split(" ")[1].charAt(1)) < 0) {
-            convertedName += name.toUpperCase().split(" ")[1].charAt(1);
-        }
-        convertedName += ".";
-        return convertedName;
+        return name;
+//        String convertedName = name.toUpperCase().split(" ")[0] + " " + name.toUpperCase().split(" ")[1].charAt(0);
+//        if ("aáeéiíoóüűöőúuAÁEÉIÍOÓUÚÜŰÖŐ".indexOf(name.toUpperCase().split(" ")[1].charAt(0)) < 0
+//             && "aáeéiíoóüűöőúuAÁEÉIÍOÓUÚÜŰÖŐ".indexOf(name.toUpperCase().split(" ")[1].charAt(1)) < 0) {
+//            convertedName += name.toUpperCase().split(" ")[1].charAt(1);
+//        }
+//        convertedName += ".";
+//        return convertedName;
     }
 
 
