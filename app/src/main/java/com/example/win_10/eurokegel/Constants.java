@@ -73,7 +73,7 @@ class Constants {
             "Marsi Csaba","Pap Ferenc","Roberto Carcangiu","Csasztvan Zsolt","Salát Mátyás","Sztojka László ifj",
             "Bányik János","Dr. Szabó László","Sztojka László id","Túri József ","Kiss János","Varga Tivadar",
             "Komlósi Károly","Türkösi Coloman","Farkas László","Horváth Lajos","Komlódi József","Levente György",
-            "Pribolyszki János cs.k","Bereczki Sándor","Vígh Mihály ","Knyihár György VB","Juhász Jácint","Pusztai Péter",
+            "Pribolyszki János cs.k","Bereczki Sándor","Vígh Mihály ","Knyihár György","Juhász Jácint","Pusztai Péter",
             "Csík András","Dávid Gábor","Malya István","Kurta László","Simcsik László","Kocsondi Tibor",
             "Hőgyes Árpád Attila","Tóth Zsolt","Kocsor Sándor","Kincses András","Kazár Pál ","Szűcs Sándor","Apollónia György",
             "Tóth Lajos","Csejtei János","Czikkely Lajos","Megyeri István","Jónás Zsolt","Bánki-Horváth Tibor",
@@ -92,7 +92,7 @@ class Constants {
             "Kiss Attila","Tóth Antal","Szilágyi Dezső","Tamási Attila","Kiss-Kása Imre","Krisztof Pál","Kovács Gusztáv",
             "Uhrin István","Kergyó János","Gyurkó László","Nádra Gábor ","Ránki Ferenc","Arató Tibor","Takács Gábor",
             "Tóth Imre","Mike Mihály","Kerepeczki Zalán","Varga Mihály","Pardi Zoltán","Kocsis László","Poljak István",
-            "Kovács László","Knyihár György Cs.","Kincses Andor","Látkóczki Csaba","Lévai András","Gulácsi Mihály ",
+            "Kovács László","Knyihár György","Kincses Andor","Látkóczki Csaba","Lévai András","Gulácsi Mihály ",
             "Coras Liviu","Kiss Tamás","Seres Péter","Hermann Pál","Laczó György id.","Demeter Sándor",
             "Agócs Mihály","Lipták Zóltán  ","James Lucas Lancaste","Boruzs Tamás","Tóth Gyula","Bálint Imre","Petrus Marcel ",
             "Laurinyecz György","Jakab János","Bende Lajos","Papp Zoltán","Varga Pál","Neibort Gréta ","Kovács Attila",
@@ -113,7 +113,7 @@ class Constants {
             "Ivanov Géza","Sós Imre ","Bálint Tibor","Hevesi Tibor","Kocsor Zoltán","Kontra Tünde","Korcsok Mihály",
             "Nagy Gábor","Szabó Sándor","Szűcs Attila","Víg Imre","Bakos Gábor ","Petri János","Szabó István","Baranya Gyula",
             "Baranya József","Molnár Gábor","Nagy Károly","Tóth Sándor","Vásári Krisztián","Vasvári Imre","Takács Gábor",
-            "Varga Mihály Cs.","Nagy Attila"
+            "Varga Mihály","Nagy Attila"
 
     ));
 
