@@ -37,19 +37,7 @@ public class AddPlayerActivity extends AppCompatActivity {
     String teamTwoPlayerTwoFullName = "";
     String teamTwoPlayerOneFullName = "";
 
-    private ArrayList<String> allPlayerSpinnerArray = new ArrayList<>(Arrays.asList(
-            "", "Kurta László", "Csasztvan Zsolt", "Simcsik László", "Vári László",
-            "Bíró Imre", "Hőgyes Benjámin", "Tomka Lajos", "Aradszki Mihály",
-            "Tímár András", "Kocsor Sándor", "Szűcs Sándor", "Zsákai Tibor",
-            "Kiss Attila", "Gyurkó László", "Turi Zoltán", "Kincses László",
-            "Sáfián György", "Carcangiu Roberto", "Bencsik Tibor", "Salát Mátyás"
-    ));
-
-//    private ArrayList<String> allPlayerSpinnerArray = new ArrayList<>(Arrays.asList(
-//            "", "Berke Gyula", "Gyurkó László", "Gyurkó Mihály", "Palyik Győzike", "Németh László"
-//            ,"Filadelfi Mihály","Kiss János", "Sztojka Dezső", "Dandé István", "Békési Károly", "Komáromi Ferenc",
-//            "ifj. Sztojka László"
-//    ));
+    private ArrayList<String> allPlayerSpinnerArray;
 
     private ArrayList<String> playedSetArray = new ArrayList<>(Arrays.asList(
             "2","3"
@@ -80,9 +68,7 @@ public class AddPlayerActivity extends AppCompatActivity {
                     "5"
             ));
 
-            allPlayerSpinnerArray = new ArrayList<>(Arrays.asList(
-                    "", "Doboz", "VB Söröző"
-            ));
+            allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayTeams;
 
             ((TextView) findViewById(R.id.playerOneName)).setText("FEHÉR CSAPAT:");
             ((TextView) findViewById(R.id.playerTwoName)).setText("SÁRGA CSAPAT:");
@@ -103,6 +89,10 @@ public class AddPlayerActivity extends AppCompatActivity {
         });
 
         if (Constants.GameType == Constants.GameTypes.PAIR) {
+            if (Constants.GamePointLimit == 100)
+                allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayEurokegel;
+            else
+                allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayMagyarbiliard;
             //SELECT PLAYER ONE SPINNER
             spinner = findViewById(R.id.chooseTeamOnePlayerOneSpinner);
             Collections.sort(allPlayerSpinnerArray);
@@ -173,6 +163,13 @@ public class AddPlayerActivity extends AppCompatActivity {
                 }
             });
         } else {
+            if ((Constants.GameType != Constants.GameTypes.RELAY)) {
+                if (Constants.GamePointLimit == 100)
+                    allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayEurokegel;
+                else
+                    allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayMagyarbiliard;
+            }
+
             ((TextView) findViewById(R.id.playerOneName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
             ((TextView) findViewById(R.id.playerTwoName)).setTextSize(TypedValue.COMPLEX_UNIT_SP, Constants.DefaultTextSizeLightLarge);
 
@@ -236,8 +233,8 @@ public class AddPlayerActivity extends AppCompatActivity {
                 }
                 else {
 
-                    Constants.PlayerOne = "Aradszki Mihály";
-                    Constants.PlayerTwo = "Bíró Imre";
+//                    Constants.PlayerOne = "Aradszki Mihály";
+//                    Constants.PlayerTwo = "Bíró Imre";
 
                     if (Constants.PlayerOne.equals("")) {
                         Constants.Tts.speak("Add meg az első játékos nevét", TextToSpeech.QUEUE_FLUSH, null);
