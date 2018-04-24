@@ -113,8 +113,8 @@ class Constants {
             "Ivanov Géza","Sós Imre ","Bálint Tibor","Hevesi Tibor","Kocsor Zoltán","Kontra Tünde","Korcsok Mihály",
             "Nagy Gábor","Szabó Sándor","Szűcs Attila","Víg Imre","Bakos Gábor ","Petri János","Szabó István","Baranya Gyula",
             "Baranya József","Molnár Gábor","Nagy Károly","Tóth Sándor","Vásári Krisztián","Vasvári Imre","Takács Gábor",
-            "Varga Mihály","Nagy Attila"
-
+            "Varga Mihály","Nagy Attila", "Brusznyiczki Sándor", "Amatőr 1", "Amatőr 2","Amatőr 3","Kondacs Pál",
+            "Klemann László", "Kutya","Juhos Zoltán", "Kovács József", "Petényi Roland"
     ));
 
     public static ArrayList<String> AllPlayerSpinnerArrayTeams = new ArrayList<>(Arrays.asList(
