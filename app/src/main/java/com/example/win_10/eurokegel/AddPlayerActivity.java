@@ -68,7 +68,10 @@ public class AddPlayerActivity extends AppCompatActivity {
                     "5"
             ));
 
-            allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayTeams;
+            if (Constants.HomeVersion > 30)
+                allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayMagyarbiliardHome;
+            else
+                allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayTeams;
 
             ((TextView) findViewById(R.id.playerOneName)).setText("FEHÉR CSAPAT:");
             ((TextView) findViewById(R.id.playerTwoName)).setText("SÁRGA CSAPAT:");
@@ -89,7 +92,9 @@ public class AddPlayerActivity extends AppCompatActivity {
         });
 
         if (Constants.GameType == Constants.GameTypes.PAIR) {
-            if (Constants.GamePointLimit == 100)
+            if (Constants.HomeVersion > 30)
+                allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayMagyarbiliardHome;
+            else if (Constants.GamePointLimit == 100)
                 allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayEurokegel;
             else
                 allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayMagyarbiliard;
@@ -164,7 +169,9 @@ public class AddPlayerActivity extends AppCompatActivity {
             });
         } else {
             if ((Constants.GameType != Constants.GameTypes.RELAY)) {
-                if (Constants.GamePointLimit == 100)
+                if (Constants.HomeVersion > 30)
+                    allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayMagyarbiliardHome;
+                else if (Constants.GamePointLimit == 100)
                     allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayEurokegel;
                 else
                     allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayMagyarbiliard;

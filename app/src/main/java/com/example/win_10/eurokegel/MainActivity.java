@@ -75,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
         Constants.Tts.speak("Az eurokégel játék típus kiválasztva", TextToSpeech.QUEUE_FLUSH, null);
     }
 
+    public void OkTextView_OnClick(View view)
+    {
+        Constants.HomeVersion += 1;
+    }
+
     public void NewGameSingle_OnClick(View view)
     {
         if (!IsValidDate())

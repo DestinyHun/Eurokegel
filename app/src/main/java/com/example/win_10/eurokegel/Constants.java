@@ -49,6 +49,7 @@ class Constants {
     static boolean GameEnds = false;
     static int ScreenWidth = 0;
     static int ScreenHeight = 0;
+    static int HomeVersion = 0;
 
     public static ArrayList<String> AllPlayerSpinnerArrayEurokegel = new ArrayList<>(Arrays.asList(
             "", "Kurta László", "Csasztvan Zsolt", "Simcsik László", "Vári László",
@@ -116,6 +117,10 @@ class Constants {
             "Varga Mihály","Nagy Attila", "Brusznyiczki Sándor", "Amatőr Versenyző 1", "Amatőr Versenyző 2","Amatőr Versenyző 3","Kondacs Pál",
             "Klemann László", "Kutya Teve","Juhos Zoltán", "Kovács József", "Petényi Roland"
     ));
+
+    public static ArrayList<String> AllPlayerSpinnerArrayMagyarbiliardHome = new ArrayList<>(Arrays.asList(
+            "","Sanyi", "Zsolti", "Bandi","Palkó",
+            "Laci", "Kutya","Zoli", "Józsi", "Roli"));
 
     public static ArrayList<String> AllPlayerSpinnerArrayTeams = new ArrayList<>(Arrays.asList(
             "", "Sarkadi Pálma BK","Kiséri BK 1.","Békési Jóbarát BK","Gyomaendrődi Korona BK 4.","Magamért Telekgerendási BK","Jóbarát Pitvarosi BK",
