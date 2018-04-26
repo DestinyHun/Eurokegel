@@ -106,6 +106,7 @@
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/EmptyString"
                 android:visibility="invisible"
+                android:onClick="OkTextView_OnClick"
                 app:srcCompat="@drawable/ok" />
 
             <ImageView
