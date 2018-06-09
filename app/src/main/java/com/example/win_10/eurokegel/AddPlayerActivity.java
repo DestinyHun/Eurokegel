@@ -77,7 +77,7 @@ public class AddPlayerActivity extends AppCompatActivity {
             ((TextView) findViewById(R.id.playerTwoName)).setText("SÁRGA CSAPAT:");
         }
         Spinner spinner = findViewById(R.id.playedSetNumberSpinner);
-        Collections.sort(playedSetArray);
+        Collections.sort(playedSetArray,Constants.collator);
         SpinnerAdapter spinnerArrayAdapter = new SpinnerAdapter(this,
                 android.R.layout.simple_spinner_dropdown_item, playedSetArray.toArray(new String[0]));
         spinner.setAdapter(spinnerArrayAdapter);
@@ -100,7 +100,7 @@ public class AddPlayerActivity extends AppCompatActivity {
                 allPlayerSpinnerArray = Constants.AllPlayerSpinnerArrayMagyarbiliard;
             //SELECT PLAYER ONE SPINNER
             spinner = findViewById(R.id.chooseTeamOnePlayerOneSpinner);
-            Collections.sort(allPlayerSpinnerArray);
+            Collections.sort(allPlayerSpinnerArray,Constants.collator);
             spinnerArrayAdapter = new SpinnerAdapter(this,
                     android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
             spinner.setAdapter(spinnerArrayAdapter);
@@ -135,7 +135,7 @@ public class AddPlayerActivity extends AppCompatActivity {
 
             //SELECT PLAYER ONE SPINNER
             spinner = findViewById(R.id.chooseTeamTwoPlayerOneSpinner);
-            Collections.sort(allPlayerSpinnerArray);
+            Collections.sort(allPlayerSpinnerArray,Constants.collator);
             spinnerArrayAdapter = new SpinnerAdapter(this,
                     android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
             spinner.setAdapter(spinnerArrayAdapter);
@@ -182,7 +182,7 @@ public class AddPlayerActivity extends AppCompatActivity {
 
             //SELECT PLAYER ONE SPINNER
             spinner = findViewById(R.id.choosePlayerOneSpinner);
-            Collections.sort(allPlayerSpinnerArray);
+            Collections.sort(allPlayerSpinnerArray,Constants.collator);
             spinnerArrayAdapter = new SpinnerAdapter(this,
                     android.R.layout.simple_spinner_dropdown_item, allPlayerSpinnerArray.toArray(new String[0]));
             spinner.setAdapter(spinnerArrayAdapter);
