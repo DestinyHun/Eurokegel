@@ -14,6 +14,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.text.Collator;
 
 class Constants {
 
@@ -50,6 +51,7 @@ class Constants {
     static int ScreenWidth = 0;
     static int ScreenHeight = 0;
     static int HomeVersion = 0;
+    static Collator collator = Collator.getInstance(new Locale("hu"));
 
     public static ArrayList<String> AllPlayerSpinnerArrayEurokegel = new ArrayList<>(Arrays.asList(
             "", "Kurta László", "Csasztvan Zsolt", "Simcsik László", "Vári László",
@@ -67,60 +69,63 @@ class Constants {
     ));
 
     public static ArrayList<String> AllPlayerSpinnerArrayMagyarbiliard = new ArrayList<>(Arrays.asList(
-            "", "Zsigovics Gábor","Mészáros Tibor","Turi Zoltán","Tímár András","Zsákai Tibor","Sztojka Dezső",
-            "Harmati László ","Sáfián György ifj.","Nagy Dénes csk.","Lázok István","Aradszki Mihály ","Pardi Roland",
-            "Hőgyes Benjámin","Komáromi Ferenc","Kincses László","Püski Sándor","Jónás József","Dananaj István Id.",
-            "Bíró Imre","Bencsik Tibor","Vári László","Varga  József","Szabó Sándor","Gali Attila",
-            "Marsi Csaba","Pap Ferenc","Roberto Carcangiu","Csasztvan Zsolt","Salát Mátyás","Sztojka László ifj",
-            "Bányik János","Dr. Szabó László","Sztojka László id","Túri József ","Kiss János","Varga Tivadar",
-            "Komlósi Károly","Türkösi Coloman","Farkas László","Horváth Lajos","Komlódi József","Levente György",
-            "Pribolyszki János cs.k","Bereczki Sándor","Vígh Mihály ","Knyihár György","Juhász Jácint","Pusztai Péter",
-            "Csík András","Dávid Gábor","Malya István","Kurta László","Simcsik László","Kocsondi Tibor",
-            "Hőgyes Árpád Attila","Tóth Zsolt","Kocsor Sándor","Kincses András","Kazár Pál ","Szűcs Sándor","Apollónia György",
-            "Tóth Lajos","Csejtei János","Czikkely Lajos","Megyeri István","Jónás Zsolt","Bánki-Horváth Tibor",
-            "Vigh Szabolcs","Békési Károly","Arató Zoltán","Kardos Ferenc","Pavlik NA","Vizes Sándor","Musztafa Oszman",
-            "Hangya Imre","Tatai Béla","Klein Tamás","Papp Balázs","Filadelfi Mihály","Barna István","Dandé István",
-            "Bélteki János","Csaba NA","Zsombok Attila","Gyebrovszki György ","Horváth Zoltán","Vida Zoltán","Horváth Lajos ",
-            "Verebi Ferenc","Kállai József","Kruchio Sándor ","Csapó Sándor","Cseman László","Dajka Ferenc",
-            "Farkasinszki Ignác","Szőke Lajos","Takács István","Simcsik Ferenc","Koppányi Viktor ","Csete Béla",
-            "Halász Ferenc","Béhr Attila","Győri János ","Kovács Károly","Balázs Sándor ","Csizmadia Tibor",
-            "Tonka Pál","Hencze Imre","Majernik Zoltán","Néveri László","Gyüre József","Zsilinszki Pál",
-            "Pacskó Attila","Plavecz László","Szabó Márk","Kenéz Sándor","Vaszkó Vince","Farkas Béla","Borbély István",
-            "Marcsó Károly","Tímár Albin","Gyeraj Krisztián ","Szabados István","Zsilinszki Mihály ","Türkösi Kálmán",
-            "Sajben György ","Debreczeni Dávid","Károlyi Zoltán","Jakucs Ferenc","Héjja Bálint","Kálmán Pál",
-            "Király István","Cservák László","Henc Lajos","Kis  Pál ","Varga János  ","Jancsó Ottó","Tóth Ferenc",
-            "Lantos Péter","Ollai Árpád","Varga Béla","Bang Lajos","Kovács Róbert","Sípos János","Mezei János",
-            "Kiss Attila","Tóth Antal","Szilágyi Dezső","Tamási Attila","Kiss-Kása Imre","Krisztof Pál","Kovács Gusztáv",
-            "Uhrin István","Kergyó János","Gyurkó László","Nádra Gábor ","Ránki Ferenc","Arató Tibor","Takács Gábor",
-            "Tóth Imre","Mike Mihály","Kerepeczki Zalán","Varga Mihály","Pardi Zoltán","Kocsis László","Poljak István",
-            "Kovács László","Knyihár György","Kincses Andor","Látkóczki Csaba","Lévai András","Gulácsi Mihály ",
-            "Coras Liviu","Kiss Tamás","Seres Péter","Hermann Pál","Laczó György id.","Demeter Sándor",
-            "Agócs Mihály","Lipták Zóltán  ","James Lucas Lancaste","Boruzs Tamás","Tóth Gyula","Bálint Imre","Petrus Marcel ",
-            "Laurinyecz György","Jakab János","Bende Lajos","Papp Zoltán","Varga Pál","Neibort Gréta ","Kovács Attila",
-            "Kromes József","Major György","Miklós Sándor","Fekete József","Labát Viktor","Bujdosó Attila","Bujdosó László",
-            "Palyik Győző","Komlósi Róbert","Csicsely Pál id.","Király János","Berke Gyula","Medvegy János",
-            "Séllei Mihaly","Jónás Márkó","Mile János","Dajkó Gergő","Gera István","Bocskai László","Gyebnár Lajos",
-            "Bólya János","Kovács Mihály ","Szekeres Lajos","Jámbor Árpád","Pántya János","Harter János","Gróza Péter ",
-            "Kerekes Csaba","Varga Géza","Pap Sándor","Kincses Tamás","Kardos Tibor","Németh László","Katona Imre",
-            "Sándor Lajos","Bárkányi János","Verebi László","Pálóczi Károly","Lázár Zsolt","Bíró Géza","Koszta József",
-            "Szabó Sándor","Gergely Attila","Prentel Bálint","Pap Károly","Lipták Gábor ","Borbola István",
-            "Marton János","Laurinyecz Szilveszter","Matuz Tamás","Törőcsik Richárd","Nagy Imre","Boros Csaba","Tóth Sándor",
-            "Csicsely Pál","Tomka Zoltán","Kovács Róbert","Bedron Csaba","Hrabovszki Patrik ","Dénes Gábor","Németh Péter",
-            "Kovács Gyula","Bartucz Mihály","Czikora József","Dénes Zsolt","Havrán Zoltán","Sepegül Dávid","Szabó Béla",
-            "Tereny Mihály","Uj Zoltán","Molnár Attila","Boros Gábor","Mózes Ferenc","Tóth Jenő","Wéber Károly",
-            "Magyari Nórbert ","Szabó Béla","Varga Attila ","Kristóf Gábor","Laczó György ifj.","Lovász Attila",
-            "Malatyinszki András","Miszlai Dezső","Gyurkó Mihály","Bányai Gábor","Kolompáti Szabolcs","Madasiu Flaviusz",
-            "Szász Zsolt","Csikós Zoltán","Schober Ottó","Vajda Soma","Szigetvári Béla","Horváth Zoltán","Kozmer László",
-            "Ivanov Géza","Sós Imre ","Bálint Tibor","Hevesi Tibor","Kocsor Zoltán","Kontra Tünde","Korcsok Mihály",
-            "Nagy Gábor","Szabó Sándor","Szűcs Attila","Víg Imre","Bakos Gábor ","Petri János","Szabó István","Baranya Gyula",
-            "Baranya József","Molnár Gábor","Nagy Károly","Tóth Sándor","Vásári Krisztián","Vasvári Imre","Takács Gábor",
-            "Varga Mihály","Nagy Attila", "Brusznyiczki Sándor", "Amatőr Versenyző 1", "Amatőr Versenyző 2","Amatőr Versenyző 3","Kondacs Pál",
+            "", "Aradszki Mihály","Barth Károly","Bencsik Tibor","Bíró Imre","Csasztvan Zsolt","Dananaj István id.",
+            "Gali Attila","Harmati László","Hőgyes Benjámin","Hrabovszki András","Sáfián György ifj.","Jónás József",
+            "Kincses László","Komáromi Ferenc","Lázok István","Marsi Csaba","Mészáros Tibor","Nagy Dénes","Pap Ferenc",
+            "Pardi Roland","Püski Sándor","Carcangiu Roberto","Salát Mátyás","Szabó Sándor Safi","Sztojka Dezső",
+            "Sztojka László","Tímár András","Turi Zoltán","Varga József","Vári László","Zsákai Tibor","Zsigovics Gábor",
+            "Kiss Attila","Mike Mihály","Nagy Attila","Szűcs Sándor","Takács Gábor","Tomka Lajos","Károlyi Zoltán",
+            "Komlódi József","Kurta László","Simcsik Ferenc","Tatai Béla","Kazár Pál","Lipták Gábor","Nádra Gábor",
+            "Csík András","Csikós Zoltán","Gardi Tamás","Levente György","Pap Károly","Kenéz Sándor","Türkösi Coloman",
+            "Boruzs Tamás","Vígh Mihály","Csejtei János","Kocsor Sándor","Musztafa Oszman","Plavecz László","Békési Károly",
+            "Dandé István","Sztojka Csaba","Kiss János","Szabó István","Berke Gyula","Filadelfi Mihály","Gyurkó László",
+            "Gyurkó Mihály","Németh László","Palyik Győző","Bánki-Horváth Tibor","Cservák László","Dajka Ferenc",
+            "Kardos Ferenc","Mezei János","Sós Imre","Vígh Szabolcs","Agócs Mihály","Bányik János","Csete Béla",
+            "Horváth Zoltán Klub120","Kozmer László.Seres Péter","Tóth Lajos","Varga Géza","Apollónia György",
+            "Czikkely Lajos","Dávid Gábor","Hangya Imre","Horváth Zoltán Korona","Bálint Imre","Csapó Sándor",
+            "Csizmadia Tibor","Harter János","Jakab János","Jakucs Ferenc","Kincses András","Komlósi Károly",
+            "Kovács Károly","Marcsó Károly","Pusztai Péter","Bakos Gábor","Bólya János","Laczó György Id.",
+            "Kerepeczki Zalán","Kovács Gusztáv","Laurinyecz György","Laurinyecz Szilveszter","Petri János",
+            "Uhrin István","Varga Mihály","Bányai Gábor.Boros Csaba","Coras Liviu","Király János","Kolompáti Szabolcs",
+            "Komlósi Róbert","Madasiu Flaviusz.Marton János","Pálóczi Károly","Prentel Bálint","Sándor Lajos","Szász Zsolt",
+            "Bang Lajos","Barna István","Boruzs Gábor","Sáfián György Id.","Kincses Andor","Kovács Gyula","Szőke Lajos",
+            "Vizes Sándor","Bárkányi János.Dénes Gábor","Fekete József","Kardos Tibor","Katona Imre","Lázár Zsolt",
+            "Mile János","Németh Péter","Hrabovszki Patrik","Jámbor Árpád","Karlovszki András","Kerekes Csaba",
+            "Koppányi Viktor","Kruchio Sándor","Petrus Marcel","Pribolyszki János","Turi József","Baranya Gyula",
+            "Baranya József","Hermann Pál","Kovács Attila","Kovács Róbert Csökmő","Molnár Gábor","Nagy Károly",
+            "Pántya János","Tóth Gyula","Tóth Imre","Tóth Sándor","Vasvári Imre","Vásári Krisztián","Demeter Sándor",
+            "Gera István","Ivanov Géza","Kiss-Kása Imre","Pardi Zoltán","Tamási attila","Tóth Ferenc","Borbola István",
+            "Bujdosó László","Laczó György Ifj.","Kiss Tamás","Knyihár György VB","Krisztof Pál","Labát Viktor",
+            "Lovász Attila","Malatyinszki András","Miszlai Dezső","Balázs Sándor","Gulácsi Mihály","Győri János",
+            "Horváth Lajos Tigrisek","Kállai József","Lipták Zoltán","Magyari Norbert","Szabó Béla","Varga Attila",
+            "Bartucz Mihály","Jancsó Ottó","Kocsondi Tibor","Kovács László","Lévai András","Majernik Zoltán",
+            "Néveri László","Sípos János","Takács István","Tonka Pál","Arató Tibor","Arató Zoltán","Bedron Csaba",
+            "Gyüre József","Malya István","Poljak István","Szekeres Lajos","Lakatos Antal","Gróza Péter","Gyebrovszki György",
+            "Gyeraj Krisztián","Kis Pál","Knyihár György Csabai","Miklós Sándor","Sajben György","Varga János",
+            "Zsilinszki Mihály","Zsilinszki Pál","Szabó László","Farkas Béla","Farkas László","Juhász Jácint",
+            "Megyeri István","Pap Sándor","Szabados István","Tóth Antal","Varga Tivadar","Vaszkó Vince","Farkasinszki Ignác",
+            "Gyebnár Lajos","Hencz Lajos","Horváth Lajos Korona","Jónás zsolt","Körösparti János","Szigetvári Béla","Tímár Albin",
+            "Borbély Béla","Bujdosó Attila","Hőgyes Attila","kincses Tamás","Molnár Attila","Nagy Imre","Szabó Sándor Pelikán",
+            "Verebi Ferenc","Verebi László","Bocskai László","Cseman László","Halász Ferenc","Héjja Bálint","Kergyó János",
+            "Kovács Mihály","Kovábs Róbert TBK","Bálint Tibor","Bereczki Sándor","Hevesi Tibor","Kocsor Zoltán","Kontra Tünde",
+            "Korcsok Mihály","Nagy Gábor","Szabó Sándor Jóbarát","Szűcs Attila","Víg Imre","Kálmán Pál","Király István",
+            "Lantos Péter","Ollai Árpád","Szilágyi Dezső","Tóth Sándor","Bukva Imre","Dajkó Gergő","Gergely Attila",
+            "James Lucas Lancaster","Jónás Márkó","Látkóczki Csaba","Neibort Gréta","Schober Ottó","Szabó Márk",
+            "Törőcsik Richárd","Vajda Soma","Béhr Attila","Bende Lajos","Borbély István","Boros Gábor","Kocsis László",
+            "Mózes Ferenc","Papp Zoltán","Tóth Jenő","Varga Pál","Wéber Károly","Czikora József","Dénes Zsolt",
+            "Dócza Zsigmond","Havrán Zoltán","Matuz Tamás","Sepegül Dávid","Szabó Béla","Szabó Sándor Pitvaros",
+            "Tereny Mihály","Uj Zoltán","Bíró Géza","Csicsely Pál Id.","Csicsly Pál Ifj.","Koszta József","Medvegy János",
+            "Ránki Ferenc","Séllei Mihály","Tomka Zoltán","Kolárovszki Gábor","Hencze Imre","Kristóf Gábor","Pacskó Attila",
+            "Türkösi Kálmán","Varga Béla","Tóth Zsolt","Pavlik János","Bélteki János","Zsombok Attila","Klein Tamás",
+            "Papp Balázs","Debreczeni Dávid","Kromes József","Major György","Vida Zoltán","Kaszás Sándor","Farkas Sándor",
+            "Megyeri József","Pálinkás Mihály","Forró Balázs","Fekete Lajos","Zsigovics József","Bálint Tibor",
+            "Brusznyiczki Sándor","Amatőr Versenyző 1","Amatőr Versenyző 2","Amatőr Versenyző 3","Kondacs Pál",
             "Klemann László", "Kutya Teve","Juhos Zoltán", "Kovács József", "Petényi Roland"
     ));
 
     public static ArrayList<String> AllPlayerSpinnerArrayMagyarbiliardHome = new ArrayList<>(Arrays.asList(
             "","Sanyi", "Zsolti", "Bandi","Palkó",
-            "Laci", "Kutya","Zoli", "Józsi", "Roli"));
+            "Laci", "Kutya","Zoli", "Józsi", "Roli", "Béla", "Peti", "Kicsi", "Soma"));
 
     public static ArrayList<String> AllPlayerSpinnerArrayTeams = new ArrayList<>(Arrays.asList(
             "", "Sarkadi Pálma BK","Kiséri BK 1.","Békési Jóbarát BK","Gyomaendrődi Korona BK 4.","Magamért Telekgerendási BK","Jóbarát Pitvarosi BK",
