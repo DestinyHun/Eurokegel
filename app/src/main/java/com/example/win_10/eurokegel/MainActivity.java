@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, 2100);
         cal.set(Calendar.MONTH, 7);
-        cal.set(Calendar.DAY_OF_MONTH, 28);
+        cal.set(Calendar.DAY_OF_MONTH, 30);
         Date validDate = cal.getTime();
 
         return validDate.after(currentDate);
