@@ -15,8 +15,8 @@
     <string name="BeginnerPlyEmpty">Töltsd ki a játékot kezdő játékos nevét!</string>
     <string name="PlyOneEqualsPlyTwo">A két játékos neve nem lehet megegyező!</string>
     <string name="MessageBoxTitleWarning">Figyelem!</string>
-    <string name="NewGameSingle">Magyarbiliárd egyéni játék</string>
-    <string name="NewGamePair">Magyarbiliárd páros játék</string>
+    <string name="NewGameSingle">Eurokegel egyéni játék</string>
+    <string name="NewGamePair">Eurokegel páros játék</string>
     <string name="NewGameRelay">Magyarbiliárd staféta játék</string>
     <string name="played_sets">ENNYI NYERT SZETTRE:</string>
     <string name="AddPoint">+</string>

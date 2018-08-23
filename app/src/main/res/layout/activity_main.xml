@@ -95,7 +95,7 @@
                 android:layout_weight="30"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/EmptyString"
-                android:visibility="visible"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/ok" />
 
             <ImageView
@@ -105,8 +105,8 @@
                 android:layout_weight="30"
                 android:background="@android:color/transparent"
                 android:contentDescription="@string/EmptyString"
-                android:visibility="invisible"
                 android:onClick="OkTextView_OnClick"
+                android:visibility="visible"
                 app:srcCompat="@drawable/ok" />
 
             <ImageView
@@ -156,13 +156,13 @@
             android:layout_height="0dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="40dp"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="0.15"
             android:background="@drawable/black_border_green"
             android:onClick="NewGameRelay_OnClick"
             android:text="@string/NewGameRelay"
-            android:visibility="visible"
+            android:visibility="invisible"
             tools:clickable="false"
             tools:layout_editor_absoluteX="16dp" />
 
