@@ -65,4 +65,6 @@
     <string name="point36">36</string>
     <string name="point37">37</string>
     <string name="point38">38</string>
+    <string name="add_player">Játékos hozzáadása</string>
+    <string name="ok">OK</string>
 </resources>
